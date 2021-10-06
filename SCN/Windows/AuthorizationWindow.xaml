@@ -1,0 +1,68 @@
+﻿<Window x:Class="SCN.Windows.AuthorizationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:SCN.Windows"
+        mc:Ignorable="d"
+        Title="Authorization" MinHeight="460" MinWidth="500" Height="480" Width="500">
+    <Window.Resources>
+        <SolidColorBrush Color="Khaki" x:Key="bkgColor"/>
+        <LinearGradientBrush x:Key="gradStyle" StartPoint="0.5, 1" EndPoint="0.5, 0">
+            <GradientStop Color="LightBlue" Offset="0" />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+        <Thickness x:Key="marginStyle" Bottom="10" Left="10" Right="10" Top="15"/>
+    </Window.Resources>
+    <Grid Background="{StaticResource bkgColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Content="Авторизация" 
+               HorizontalAlignment="Center"
+               FontSize="50">
+        </Label>
+        
+        <StackPanel HorizontalAlignment="Center" Grid.Row="1" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="Login" Content="Логин:" FontSize="20"/>
+                <TextBox Width="250" FontSize="20" Margin="15 0 0 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                <Label x:Name="Password" Content="Пароль:" FontSize="20"/>
+                <TextBox Width="250" FontSize="20" Margin="3 0 0 0"/>
+            </StackPanel>
+            <Button Width="120" Height="40"
+                    Content="Войти"
+                    HorizontalAlignment="Center"
+                    Background="{StaticResource gradStyle}"
+                    FontSize="15"
+                    Margin="{StaticResource marginStyle}"
+                    Command="{Binding EntryAsClientCommand}">
+            </Button>
+        </StackPanel>
+        
+        <Button Grid.Row="2" Width="200" Height="50" 
+                Content="Регистрация" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Bottom" 
+                Background="{StaticResource gradStyle}" 
+                Margin="{StaticResource marginStyle}"
+                FontSize="15"
+                Command="{Binding RegistrationCommand}">
+        </Button>
+        
+        <Button Grid.Row="2" Width="200" Height="50" 
+                Content="Войти от админа" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" 
+                Background="{StaticResource gradStyle}" 
+                Margin="{StaticResource marginStyle}"
+                FontSize="15"
+                Command="{Binding EntryAsAdminCommand}">
+        </Button>
+    </Grid>
+</Window>
