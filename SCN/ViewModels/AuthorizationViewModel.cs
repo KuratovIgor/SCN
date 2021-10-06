@@ -1,4 +1,6 @@
-﻿namespace SCN.ViewModels
+﻿using SCN.Windows;
+
+namespace SCN.ViewModels
 {
     public class AuthorizationViewModel
     {
@@ -24,10 +26,14 @@
                    (_entryAsAdminCommand = new RelayCommand(obj => EntryAsAdmin()));
         }
 
-        private void EntryAsClient() { }
+        private void EntryAsClient() { /*здесь будет логика входа*/}
+
+        private void RegisterClient()
+        {
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.ShowDialog();
+        }
         
-        private void RegisterClient() { }
-        
-        private void EntryAsAdmin() { }
+        private void EntryAsAdmin() { /*здесь будет логика входа от админа*/ }
     }
 }

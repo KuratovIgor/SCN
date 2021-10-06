@@ -52,8 +52,12 @@
         </ApplicationDefinition>
         <Compile Include="RelayCommand.cs" />
         <Compile Include="ViewModels\AuthorizationViewModel.cs" />
+        <Compile Include="ViewModels\RegisterViewModel.cs" />
         <Compile Include="Windows\AuthorizationWindow.xaml.cs">
           <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Windows\RegisterWindow.xaml.cs">
+          <DependentUpon>RegisterWindow.xaml</DependentUpon>
         </Compile>
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
@@ -68,6 +72,7 @@
             <SubType>Code</SubType>
         </Compile>
         <Page Include="Windows\AuthorizationWindow.xaml" />
+        <Page Include="Windows\RegisterWindow.xaml" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs">

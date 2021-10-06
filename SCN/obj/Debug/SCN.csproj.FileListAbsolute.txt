@@ -32,3 +32,5 @@ C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\SCN.csproj.GenerateResource.ca
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\SCN.csproj.CoreCompileInputs.cache
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\SCN.exe
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\SCN.pdb
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\RegisterWindow.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\RegisterWindow.baml
