@@ -8,7 +8,6 @@ namespace SCN.Windows
         public AuthorizationWindow()
         {
             InitializeComponent();
-            DataContext = new AuthorizationViewModel();
         }
     }
 }

@@ -1,0 +1,48 @@
+﻿<Window x:Class="SCN.Windows.MainMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:SCN.Windows"
+        xmlns:vm="clr-namespace:SCN.ViewModels"
+        mc:Ignorable="d"
+        Title="Главное меню" MinHeight="350" MinWidth="500" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainMenuViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <ResourceDictionary Source="../XamlResources.xaml"></ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Content="Конфигуратор" Template="{StaticResource btnTemplate}"/>
+                <Button Grid.Row="1" Content="Комлпектующие" Template="{StaticResource btnTemplate}" Command="{Binding OpenComputerComponentsCommand}"/>
+                <Button Grid.Row="2" Content="Заказы" Template="{StaticResource btnTemplate}"/>
+            </Grid>
+        </Border>
+
+        <Image Grid.Column="1" Grid.ColumnSpan="2" 
+               Source="{Binding SourceUri}">
+            <Image.Effect>
+                <BlurEffect Radius="3" RenderingBias="Performance"></BlurEffect>
+            </Image.Effect>
+        </Image>
+        <StackPanel Grid.Column="3" VerticalAlignment="Bottom" Margin="15">
+            <Button Content="К окну регистрации" Template="{StaticResource btnTemplate}" Command="{Binding ExitToStartWindowCommand}"/>
+            <Button Content="Выход" Template="{StaticResource btnTemplate}" Command="{Binding ExitCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -4,20 +4,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:SCN.Windows"
+        xmlns:vm="clr-namespace:SCN.ViewModels"
         mc:Ignorable="d"
         Title="Авторизация" MinHeight="460" MinWidth="500" Height="480" Width="500">
+    <Window.DataContext>
+        <vm:AuthorizationViewModel/>
+    </Window.DataContext>
     <Window.Resources>
-        <SolidColorBrush Color="Khaki" x:Key="bkgColor"/>
-        <LinearGradientBrush x:Key="gradStyle" StartPoint="0.5, 1" EndPoint="0.5, 0">
-            <GradientStop Color="LightBlue" Offset="0" />
-            <GradientStop Color="White" Offset="1" />
-        </LinearGradientBrush>
-        <Thickness x:Key="marginStyle" Bottom="10" Left="10" Right="10" Top="15"/>
+        <ResourceDictionary Source="../XamlResources.xaml"/>
     </Window.Resources>
     <Grid Background="{StaticResource bkgColor}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
@@ -26,43 +25,49 @@
                FontSize="50">
         </Label>
         
-        <StackPanel HorizontalAlignment="Center" Grid.Row="1" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Label Content="Логин:" FontSize="20"/>
-                <TextBox x:Name="Login" Width="250" FontSize="20"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0 15 0 0" HorizontalAlignment="Right">
-                <Label Content="Пароль:" FontSize="20"/>
-                <TextBox x:Name="Password" Width="250" FontSize="20"/>
-            </StackPanel>
-            <Button Width="120" Height="40"
-                    Content="Войти"
-                    HorizontalAlignment="Center"
-                    Background="{StaticResource gradStyle}"
-                    FontSize="15"
-                    Margin="{StaticResource marginStyle}"
-                    Command="{Binding EntryAsClientCommand}">
-            </Button>
-        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Логин:"/>
+                <TextBox Grid.Column="1" Text="{Binding Login}"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" x:Name="Password" Text="Пароль:"/>
+                <TextBox Grid.Column="1" Text="{Binding Password}"/>
+            </Grid>
+
+            <Button Grid.Row="2" Content="Войти" Margin="120 0" Template="{StaticResource btnTemplate}" Command="{Binding EntryAsClientCommand}"/>
+        </Grid>
         
         <Button Grid.Row="2" Width="200" Height="50" 
                 Content="Регистрация" 
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Bottom" 
-                Background="{StaticResource gradStyle}" 
-                Margin="{StaticResource marginStyle}"
-                FontSize="15"
+                Template="{StaticResource btnTemplate}"
                 Command="{Binding RegistrationCommand}">
         </Button>
         
         <Button Grid.Row="2" Width="200" Height="50" 
-                Content="Администратор"
-                Foreground="Red"
+                Content="Войти от админа" 
                 HorizontalAlignment="Right" 
                 VerticalAlignment="Bottom" 
-                Background="{StaticResource gradStyle}" 
-                Margin="{StaticResource marginStyle}"
-                FontSize="15"
+                Template="{StaticResource btnTemplate}"
                 Command="{Binding EntryAsAdminCommand}">
         </Button>
     </Grid>
