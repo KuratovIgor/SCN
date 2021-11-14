@@ -18,7 +18,6 @@ C:\Users\KuratovIA\RiderProjects\SCN\SCN\obj\Debug\SCN.pdb
 C:\Users\KuratovIA\source\repos\SCN\SCN\bin\Debug\SCN.exe.config
 C:\Users\KuratovIA\source\repos\SCN\SCN\bin\Debug\SCN.exe
 C:\Users\KuratovIA\source\repos\SCN\SCN\bin\Debug\SCN.pdb
-C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\SCN.csproj.AssemblyReference.cache
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\MainWindow.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\AuthorizationWindow.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\App.g.cs
@@ -43,3 +42,18 @@ C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\SCN_Content.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\ComputerComponentsWindow.baml
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\MainMenuWindow.baml
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\CpuWindow.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\CpuWindow.baml
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\SCN.csproj.AssemblyReference.cache
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\VideocardWindow.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\VideocardWindow.baml
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\SystemBoardWindow.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\SystemBoardWindow.baml
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\RamWindow.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\RamWindow.baml
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\PsuWindow.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\PsuWindow.baml
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\HardDriveWindow.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\HardDriveWindow.baml
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\SsdWindow.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\SsdWindow.baml

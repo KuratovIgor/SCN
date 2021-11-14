@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SCN.Windows"
         xmlns:vm="clr-namespace:SCN.ViewModels"
+        xmlns:uc="clr-namespace:SCN.UserControls"
         mc:Ignorable="d"
-        Title="Комплектующие" Height="650" Width="1200">
+        Title="Комплектующие" Height="650" Width="1200" WindowState="Maximized">
     <Window.DataContext>
         <vm:ComputerComponentsViewModel/>
     </Window.DataContext>
@@ -38,37 +39,43 @@
             <TabItem Header="Процессоры" FontSize="15">
                 <Border BorderBrush="Black" BorderThickness="2"
                         CornerRadius="2">
-
+                    <uc:CpuWindow></uc:CpuWindow>
                 </Border>
             </TabItem>
             <TabItem Header="Видеокарты" FontSize="15">
                 <Border BorderBrush="Black" BorderThickness="2"
                         CornerRadius="2">
-
+                    <uc:VideocardWindow></uc:VideocardWindow>
                 </Border>
             </TabItem>
             <TabItem Header="Мат.платы" FontSize="15">
                 <Border BorderBrush="Black" BorderThickness="2"
                         CornerRadius="2">
-
+                    <uc:SystemBoardWindow></uc:SystemBoardWindow>
                 </Border>
             </TabItem>
             <TabItem Header="Оперативная память" FontSize="15">
                 <Border BorderBrush="Black" BorderThickness="2"
                         CornerRadius="2">
-
+                    <uc:RamWindow></uc:RamWindow>
                 </Border>
             </TabItem>
             <TabItem Header="Блок питания" FontSize="15">
                 <Border BorderBrush="Black" BorderThickness="2"
                         CornerRadius="2">
-
+                    <uc:PsuWindow></uc:PsuWindow>
                 </Border>
             </TabItem>
             <TabItem Header="Жесткие накопители" FontSize="15">
                 <Border BorderBrush="Black" BorderThickness="2"
                         CornerRadius="2">
-
+                    <uc:HardDriveWindow></uc:HardDriveWindow>
+                </Border>
+            </TabItem>
+            <TabItem Header="SSD накопители" FontSize="15">
+                <Border BorderBrush="Black" BorderThickness="2"
+                        CornerRadius="2">
+                    <uc:SsdWindow></uc:SsdWindow>
                 </Border>
             </TabItem>
         </TabControl>

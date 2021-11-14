@@ -43,42 +43,42 @@ namespace SCN.ViewModels
 
         private void EntryAsClient()
         {
-            bool isUserExists = false;
+            //bool isUserExists = false;
 
-            string command = $"select * from Client";
-            SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
+            //string command = $"select * from Client";
+            //SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
 
-            using (SqlDataReader reader = sqlCommand.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    if ((reader.GetValue(0) as string) == Login && (reader.GetValue(1) as string) == Password)
-                    {
-                        isUserExists = true;
+            //using (SqlDataReader reader = sqlCommand.ExecuteReader())
+            //{
+            //    while (reader.Read())
+            //    {
+            //        if ((reader.GetValue(0) as string) == Login && (reader.GetValue(1) as string) == Password)
+            //        {
+            //            isUserExists = true;
 
-                        User.Login = Login;
-                        User.Password = Password;
-                        User.FIO = reader.GetValue(2) as string;
-                        User.PhoneNumber = reader.GetValue(3) as string;
-                        User.IsAdmin = Convert.ToInt32(reader.GetValue(4));
+            //            User.Login = Login;
+            //            User.Password = Password;
+            //            User.FIO = reader.GetValue(2) as string;
+            //            User.PhoneNumber = reader.GetValue(3) as string;
+            //            User.IsAdmin = Convert.ToInt32(reader.GetValue(4));
 
-                        break;
-                    }
-                }
-            }
+            //            break;
+            //        }
+            //    }
+            //}
 
-            if (isUserExists)
-            {
+            //if (isUserExists)
+            //{
                 var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
                 window.Close();
 
                 MainMenuWindow mw = new MainMenuWindow();
                 mw.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Неверный логин или пароль!");
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Неверный логин или пароль!");
+            //}
         }
 
         private void RegisterClient()

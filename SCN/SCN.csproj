@@ -66,8 +66,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ComputerComponents\ComputerComponent.cs" />
+    <Compile Include="ComputerComponents\CPU.cs" />
+    <Compile Include="ComputerComponents\HardDrive.cs" />
+    <Compile Include="ComputerComponents\PSU.cs" />
+    <Compile Include="ComputerComponents\RAM.cs" />
+    <Compile Include="ComputerComponents\SSD.cs" />
+    <Compile Include="ComputerComponents\SystemBoard.cs" />
+    <Compile Include="ComputerComponents\Videocard.cs" />
     <Compile Include="Models\RelayCommand.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="UserControls\CpuWindow.xaml.cs">
+      <DependentUpon>CpuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\HardDriveWindow.xaml.cs">
+      <DependentUpon>HardDriveWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PsuWindow.xaml.cs">
+      <DependentUpon>PsuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RamWindow.xaml.cs">
+      <DependentUpon>RamWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SsdWindow.xaml.cs">
+      <DependentUpon>SsdWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SystemBoardWindow.xaml.cs">
+      <DependentUpon>SystemBoardWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\VideocardWindow.xaml.cs">
+      <DependentUpon>VideocardWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AuthorizationViewModel.cs" />
     <Compile Include="ViewModels\ComputerComponentsViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
@@ -96,6 +125,34 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\CpuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\HardDriveWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PsuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\RamWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SsdWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SystemBoardWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\VideocardWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AuthorizationWindow.xaml" />
     <Page Include="Windows\ComputerComponentsWindow.xaml">
       <SubType>Designer</SubType>

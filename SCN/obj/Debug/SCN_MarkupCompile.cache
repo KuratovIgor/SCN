@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\KuratovIA\source\repos\SCN\SCN\App.xaml
-6-1364281282
+13-1987114287
 2-1434212116
-14307007165
+291991185661
 10-246449272
-MainWindow.xaml;Windows\AuthorizationWindow.xaml;Windows\ComputerComponentsWindow.xaml;Windows\MainMenuWindow.xaml;Windows\RegisterWindow.xaml;XamlResources.xaml;
+MainWindow.xaml;UserControls\CpuWindow.xaml;UserControls\HardDriveWindow.xaml;UserControls\PsuWindow.xaml;UserControls\RamWindow.xaml;UserControls\SsdWindow.xaml;UserControls\SystemBoardWindow.xaml;UserControls\VideocardWindow.xaml;Windows\AuthorizationWindow.xaml;Windows\ComputerComponentsWindow.xaml;Windows\MainMenuWindow.xaml;Windows\RegisterWindow.xaml;XamlResources.xaml;
 
 False
 
