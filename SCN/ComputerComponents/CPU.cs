@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.SqlTypes;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
@@ -18,10 +19,142 @@ namespace SCN.ComputerComponents
 {
     public class CPU : ComputerComponent
     {
+        private RelayCommand _filterInfoCommand;
+
+        private string _filterCommand = "";
+
+        private string _maker;
+        private string _countCores;
+        private string _startFrequency;
+        private string _lastFrequency;
+        private string _startPrice;
+        private string _lastPrice;
+
+        public string Maker
+        {
+            get => _maker;
+            set
+            {
+                _maker = value;
+                OnPropertyChanged(nameof(Maker));
+            }
+        }
+
+        public string CountCores
+        {
+            get => _countCores;
+            set
+            {
+                _countCores = value;
+                OnPropertyChanged(nameof(CountCores));
+            }
+        }
+
+        public string StartFrequency
+        {
+            get => _startFrequency;
+            set
+            {
+                _startFrequency = value;
+                OnPropertyChanged(nameof(StartFrequency));
+            }
+        }
+
+        public string LastFrequency
+        {
+            get => _lastFrequency;
+            set
+            {
+                _lastFrequency = value;
+                OnPropertyChanged(nameof(LastFrequency));
+            }
+        }
+
+        public string StartPrice
+        {
+            get => _startPrice;
+            set
+            {
+                _startPrice = value;
+                OnPropertyChanged(nameof(StartPrice));
+            }
+        }
+
+        public string LastPrice
+        {
+            get => _lastPrice;
+            set
+            {
+                _lastPrice = value;
+                OnPropertyChanged(nameof(LastPrice));
+            }
+        }
+
         public CPU()
         {
             SetImage("CPU.jpg");
             UpdateInfo("Процессоры");
         }
+
+        private void FilterInfo()
+        {
+            FilterMaker();
+            FilterCores();
+            FilterFrequency();
+            FilterPrice();
+
+            if (_filterCommand == "")
+                _filterCommand = "select * from Процессоры";
+
+            FilterTheInfo(_filterCommand);
+
+            _filterCommand = "";
+        }
+
+        private void FilterMaker()
+        {
+            if (!string.IsNullOrWhiteSpace(Maker))
+            {
+                if (_filterCommand == "")
+                    _filterCommand = $"select * from Процессоры where Производитель like '%{Maker}%'";
+                else
+                    _filterCommand += $" and Производитель like '%{Maker}%'";
+            }
+        }
+
+        private void FilterCores()
+        {
+            if (!string.IsNullOrWhiteSpace(CountCores))
+            {
+                if (_filterCommand == "")
+                    _filterCommand = $"select * from Процессоры where [Кол-во ядер] = {CountCores}";
+                else
+                    _filterCommand += $" and [Кол-во ядер] = {CountCores}";
+            }
+        }
+
+        private void FilterFrequency()
+        {
+            if (!string.IsNullOrWhiteSpace(StartFrequency) && !string.IsNullOrWhiteSpace(LastFrequency) && Convert.ToInt32(StartFrequency) <= Convert.ToInt32(LastFrequency))
+            {
+                if (_filterCommand == "")
+                    _filterCommand = $"select * from Процессоры where {StartFrequency} <= Частота and Частота <= {LastFrequency}";
+                else
+                    _filterCommand += $" and {StartFrequency} <= Частота and Частота <= { LastFrequency}";
+            }
+        }
+
+        private void FilterPrice()
+        {
+            if (!string.IsNullOrWhiteSpace(StartPrice) && !string.IsNullOrWhiteSpace(LastPrice) && Convert.ToInt32(StartPrice) <= Convert.ToInt32(LastPrice))
+            {
+                if (_filterCommand == "")
+                    _filterCommand = $"select * from Процессоры where {StartPrice} <= Цена and Цена <= {LastPrice}";
+                else
+                    _filterCommand += $" and {StartPrice} <= Цена and Цена <= {LastPrice}";
+            }
+        }
+
+        public RelayCommand FilterInfoCommand { get => _filterInfoCommand ?? (_filterInfoCommand = new RelayCommand(obj => FilterInfo())); }
     }
 }

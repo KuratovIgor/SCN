@@ -18,6 +18,8 @@ namespace SCN.ComputerComponents
         protected SqlConnection _sqlConnection =
             new SqlConnection(ConfigurationManager.ConnectionStrings["SCNDB"].ConnectionString);
 
+        protected string _executedCommand;
+
         public string SourceUri { get; set; }
 
         private DataTable _component;
@@ -43,13 +45,22 @@ namespace SCN.ComputerComponents
 
         protected void UpdateInfo(string nameComponent)
         {
-            string command = $"select * from [{nameComponent}]";
+            _executedCommand = $"select * from [{nameComponent}]";
 
             ComponentInfo = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(command, _sqlConnection);
+            SqlDataAdapter adapter = new SqlDataAdapter(_executedCommand, _sqlConnection);
             adapter.Fill(ComponentInfo);
         }
 
+        protected void FilterTheInfo(string command)
+        {
+            _executedCommand = command;
+            SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
+
+            ComponentInfo.Clear();
+            SqlDataAdapter adapter = new SqlDataAdapter(_executedCommand, _sqlConnection);
+            adapter.Fill(ComponentInfo);
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

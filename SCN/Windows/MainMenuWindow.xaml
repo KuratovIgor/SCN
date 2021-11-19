@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SCN.Windows"
         xmlns:vm="clr-namespace:SCN.ViewModels"
         mc:Ignorable="d"
-        Title="Главное меню" MinHeight="350" MinWidth="500" Height="450" Width="800">
+        Title="Главное меню" MinHeight="450" MinWidth="800" Height="450" Width="800">
     <Window.DataContext>
         <vm:MainMenuViewModel/>
     </Window.DataContext>

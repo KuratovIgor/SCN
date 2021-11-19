@@ -44,7 +44,6 @@ C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\ComputerComponentsWind
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\MainMenuWindow.baml
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\CpuWindow.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\CpuWindow.baml
-C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\SCN.csproj.AssemblyReference.cache
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\VideocardWindow.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\VideocardWindow.baml
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\SystemBoardWindow.g.cs
@@ -57,3 +56,4 @@ C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\HardDriveWindow.g
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\HardDriveWindow.baml
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\SsdWindow.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\UserControls\SsdWindow.baml
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\SCN.csproj.AssemblyReference.cache
