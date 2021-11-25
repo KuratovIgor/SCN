@@ -1,0 +1,255 @@
+USE [SCNDB]
+GO
+/****** Object:  Table [dbo].[Client]    Script Date: 25.11.2021 23:25:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Client](
+	[Login] [nvarchar](50) NOT NULL,
+	[Password] [nvarchar](50) NOT NULL,
+	[FIO] [nvarchar](70) NOT NULL,
+	[Phone] [nvarchar](12) NOT NULL,
+	[IsAdmin] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Login] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SSD Накопители]    Script Date: 25.11.2021 23:25:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SSD Накопители](
+	[Код] [int] IDENTITY(1,1) NOT NULL,
+	[Производитель] [varchar](30) NOT NULL,
+	[Модель] [varchar](30) NOT NULL,
+	[Объем] [varchar](15) NOT NULL,
+	[Физический интерфейс] [varchar](20) NOT NULL,
+	[Цена] [money] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Код] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Блоки питания]    Script Date: 25.11.2021 23:25:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Блоки питания](
+	[Код] [int] IDENTITY(1,1) NOT NULL,
+	[Производитель] [varchar](30) NOT NULL,
+	[Модель] [varchar](30) NOT NULL,
+	[Форм-фактор] [varchar](15) NOT NULL,
+	[Мощность] [int] NOT NULL,
+	[Цена] [money] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Код] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Видеокарты]    Script Date: 25.11.2021 23:25:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Видеокарты](
+	[Код] [int] IDENTITY(1,1) NOT NULL,
+	[Производитель] [varchar](30) NOT NULL,
+	[Модель] [nvarchar](50) NOT NULL,
+	[Тип памяти] [varchar](15) NOT NULL,
+	[Объем видеопамяти] [varchar](10) NOT NULL,
+	[Интерфейс подключения] [varchar](10) NOT NULL,
+	[Цена] [money] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Код] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Жесткие диски]    Script Date: 25.11.2021 23:25:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Жесткие диски](
+	[Код] [int] IDENTITY(1,1) NOT NULL,
+	[Производитель] [varchar](30) NOT NULL,
+	[Модель] [varchar](30) NOT NULL,
+	[Объем HDD] [int] NOT NULL,
+	[Интерфейс] [varchar](20) NOT NULL,
+	[Цена] [money] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Код] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Материнские платы]    Script Date: 25.11.2021 23:25:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Материнские платы](
+	[Код] [int] IDENTITY(1,1) NOT NULL,
+	[Производитель] [varchar](30) NOT NULL,
+	[Модель] [varchar](50) NOT NULL,
+	[Форм-фактор] [varchar](15) NOT NULL,
+	[Сокет] [varchar](20) NOT NULL,
+	[Чипсет] [varchar](20) NULL,
+	[Тип памяти] [varchar](20) NOT NULL,
+	[Количество SATA] [int] NOT NULL,
+	[Цена] [money] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Код] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Оперативная память]    Script Date: 25.11.2021 23:25:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Оперативная память](
+	[Код] [int] IDENTITY(1,1) NOT NULL,
+	[Производитель] [varchar](30) NOT NULL,
+	[Модель] [varchar](30) NOT NULL,
+	[Тип памяти] [varchar](15) NOT NULL,
+	[Объем] [int] NOT NULL,
+	[Цена] [money] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Код] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Процессоры]    Script Date: 25.11.2021 23:25:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Процессоры](
+	[Код] [int] IDENTITY(1,1) NOT NULL,
+	[Производитель] [varchar](30) NOT NULL,
+	[Модель] [varchar](30) NOT NULL,
+	[Сокет] [varchar](20) NOT NULL,
+	[Кол-во ядер] [int] NOT NULL,
+	[Частота] [int] NOT NULL,
+	[Тип памяти] [varchar](10) NOT NULL,
+	[Цена] [money] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Код] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[Client] ([Login], [Password], [FIO], [Phone], [IsAdmin]) VALUES (N'kuratov', N'123', N'Куратов И. А.', N'89059350364', 0)
+GO
+SET IDENTITY_INSERT [dbo].[SSD Накопители] ON 
+GO
+INSERT [dbo].[SSD Накопители] ([Код], [Производитель], [Модель], [Объем], [Физический интерфейс], [Цена]) VALUES (1, N'A-DATA', N'SU750', N'256', N'SATA 3', 3399.0000)
+GO
+INSERT [dbo].[SSD Накопители] ([Код], [Производитель], [Модель], [Объем], [Физический интерфейс], [Цена]) VALUES (2, N'Apacer', N'AST220', N'240', N'SATA 3', 3799.0000)
+GO
+INSERT [dbo].[SSD Накопители] ([Код], [Производитель], [Модель], [Объем], [Физический интерфейс], [Цена]) VALUES (3, N'Samsung', N'870 EVO', N'500', N'SATA 3', 5590.0000)
+GO
+INSERT [dbo].[SSD Накопители] ([Код], [Производитель], [Модель], [Объем], [Физический интерфейс], [Цена]) VALUES (4, N'Smartbuy', N'S11T', N'256', N'mSata', 5199.0000)
+GO
+INSERT [dbo].[SSD Накопители] ([Код], [Производитель], [Модель], [Объем], [Физический интерфейс], [Цена]) VALUES (5, N'HP', N'S700 Pro', N'512', N'SATA 3', 6299.0000)
+GO
+SET IDENTITY_INSERT [dbo].[SSD Накопители] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Блоки питания] ON 
+GO
+INSERT [dbo].[Блоки питания] ([Код], [Производитель], [Модель], [Форм-фактор], [Мощность], [Цена]) VALUES (1, N'Aerocool', N'Cylon 400W', N'ATX', 400, 2999.0000)
+GO
+INSERT [dbo].[Блоки питания] ([Код], [Производитель], [Модель], [Форм-фактор], [Мощность], [Цена]) VALUES (2, N'CoolerMaster', N'Elite V4', N'ATX', 500, 3499.0000)
+GO
+INSERT [dbo].[Блоки питания] ([Код], [Производитель], [Модель], [Форм-фактор], [Мощность], [Цена]) VALUES (3, N'Corsair', N'CV650', N'ATX', 650, 4599.0000)
+GO
+INSERT [dbo].[Блоки питания] ([Код], [Производитель], [Модель], [Форм-фактор], [Мощность], [Цена]) VALUES (4, N'Cougar', N'STX 450W', N'ATX', 450, 3999.0000)
+GO
+INSERT [dbo].[Блоки питания] ([Код], [Производитель], [Модель], [Форм-фактор], [Мощность], [Цена]) VALUES (5, N'Aerocool', N'SCAS PLUS', N'ATX', 800, 4899.0000)
+GO
+SET IDENTITY_INSERT [dbo].[Блоки питания] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Видеокарты] ON 
+GO
+INSERT [dbo].[Видеокарты] ([Код], [Производитель], [Модель], [Тип памяти], [Объем видеопамяти], [Интерфейс подключения], [Цена]) VALUES (1, N'MSI', N'GeForce GTX 1050 Ti 4GT', N'GDDR5', N'4', N'PCI-E', 18899.0000)
+GO
+INSERT [dbo].[Видеокарты] ([Код], [Производитель], [Модель], [Тип памяти], [Объем видеопамяти], [Интерфейс подключения], [Цена]) VALUES (2, N'ASUS', N'GeForce GTX 1050 Ti Phoenix', N'GDDR5', N'4', N'PCI-E', 19999.0000)
+GO
+INSERT [dbo].[Видеокарты] ([Код], [Производитель], [Модель], [Тип памяти], [Объем видеопамяти], [Интерфейс подключения], [Цена]) VALUES (3, N'GIGABYTE', N'GeForce GTX 1050 Ti OC LP', N'GDDR5', N'4', N'PCI-E', 18999.0000)
+GO
+INSERT [dbo].[Видеокарты] ([Код], [Производитель], [Модель], [Тип памяти], [Объем видеопамяти], [Интерфейс подключения], [Цена]) VALUES (4, N'ASUS', N'GeForce GTX 1050 Ti Cerberus', N'GDDR5', N'4', N'PCI-E', 20599.0000)
+GO
+INSERT [dbo].[Видеокарты] ([Код], [Производитель], [Модель], [Тип памяти], [Объем видеопамяти], [Интерфейс подключения], [Цена]) VALUES (5, N'MSI', N'AMD Radeon RX 550 AERO ITX', N'GDDR5', N'4', N'PCI-E', 12499.0000)
+GO
+SET IDENTITY_INSERT [dbo].[Видеокарты] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Жесткие диски] ON 
+GO
+INSERT [dbo].[Жесткие диски] ([Код], [Производитель], [Модель], [Объем HDD], [Интерфейс], [Цена]) VALUES (1, N'Seagate', N'7200 BarraCuda', 1, N'SATA 3', 3199.0000)
+GO
+INSERT [dbo].[Жесткие диски] ([Код], [Производитель], [Модель], [Объем HDD], [Интерфейс], [Цена]) VALUES (2, N'Toshiba', N'V300', 1, N'SATA 3', 3699.0000)
+GO
+INSERT [dbo].[Жесткие диски] ([Код], [Производитель], [Модель], [Объем HDD], [Интерфейс], [Цена]) VALUES (3, N'Seagate', N'SkyHawk', 1, N'SATA 3', 3799.0000)
+GO
+INSERT [dbo].[Жесткие диски] ([Код], [Производитель], [Модель], [Объем HDD], [Интерфейс], [Цена]) VALUES (4, N'Toshiba', N'P300', 2, N'SATA 3', 4399.0000)
+GO
+INSERT [dbo].[Жесткие диски] ([Код], [Производитель], [Модель], [Объем HDD], [Интерфейс], [Цена]) VALUES (5, N'Seagate', N'BarraCuda', 2, N'SATA 3', 4499.0000)
+GO
+SET IDENTITY_INSERT [dbo].[Жесткие диски] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Материнские платы] ON 
+GO
+INSERT [dbo].[Материнские платы] ([Код], [Производитель], [Модель], [Форм-фактор], [Сокет], [Чипсет], [Тип памяти], [Количество SATA], [Цена]) VALUES (1, N'ASUS', N'A68HM-PLUS', N'Micro-ATX', N'FM2+', N'AMD A68H', N'DDR3', 4, 4499.0000)
+GO
+INSERT [dbo].[Материнские платы] ([Код], [Производитель], [Модель], [Форм-фактор], [Сокет], [Чипсет], [Тип памяти], [Количество SATA], [Цена]) VALUES (3, N'MSI', N'A320M PRO-E', N'Micro-ATX', N'AM4', N'AMD A320', N'DDR4', 4, 3799.0000)
+GO
+INSERT [dbo].[Материнские платы] ([Код], [Производитель], [Модель], [Форм-фактор], [Сокет], [Чипсет], [Тип памяти], [Количество SATA], [Цена]) VALUES (4, N'GIGABYTE', N'A520M S2H', N'Micro-ATX', N'AM4', N'AMD A520', N'DDR4', 4, 4999.0000)
+GO
+INSERT [dbo].[Материнские платы] ([Код], [Производитель], [Модель], [Форм-фактор], [Сокет], [Чипсет], [Тип памяти], [Количество SATA], [Цена]) VALUES (5, N'ASRock', N'B365M-HDV', N'Micro-ATX', N'LGA 1151-v2', N'Intel B365', N'DDR4', 6, 4999.0000)
+GO
+INSERT [dbo].[Материнские платы] ([Код], [Производитель], [Модель], [Форм-фактор], [Сокет], [Чипсет], [Тип памяти], [Количество SATA], [Цена]) VALUES (6, N'GIGABYTE', N'H410M S2', N'Micro-ATX', N'LGA 1200', N'Intel H410', N'DDR4', 4, 6199.0000)
+GO
+SET IDENTITY_INSERT [dbo].[Материнские платы] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Оперативная память] ON 
+GO
+INSERT [dbo].[Оперативная память] ([Код], [Производитель], [Модель], [Тип памяти], [Объем], [Цена]) VALUES (1, N'HP', N'V6', N'DDR4', 8, 3599.0000)
+GO
+INSERT [dbo].[Оперативная память] ([Код], [Производитель], [Модель], [Тип памяти], [Объем], [Цена]) VALUES (2, N'Kingston', N'HyperX FURY Black', N'DDR4', 4, 2599.0000)
+GO
+INSERT [dbo].[Оперативная память] ([Код], [Производитель], [Модель], [Тип памяти], [Объем], [Цена]) VALUES (4, N'Kingston', N'ValueRAM', N'DDR4', 8, 3199.0000)
+GO
+INSERT [dbo].[Оперативная память] ([Код], [Производитель], [Модель], [Тип памяти], [Объем], [Цена]) VALUES (5, N'A-Data', N'XPG Gammix D10', N'DDR4', 8, 3499.0000)
+GO
+INSERT [dbo].[Оперативная память] ([Код], [Производитель], [Модель], [Тип памяти], [Объем], [Цена]) VALUES (6, N'A-Data', N'Premier', N'DDR4', 8, 3699.0000)
+GO
+SET IDENTITY_INSERT [dbo].[Оперативная память] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Процессоры] ON 
+GO
+INSERT [dbo].[Процессоры] ([Код], [Производитель], [Модель], [Сокет], [Кол-во ядер], [Частота], [Тип памяти], [Цена]) VALUES (1, N'Intel', N'Core i5-10400 OEM', N'LGA 1200', 6, 2900, N'DDR4', 14799.0000)
+GO
+INSERT [dbo].[Процессоры] ([Код], [Производитель], [Модель], [Сокет], [Кол-во ядер], [Частота], [Тип памяти], [Цена]) VALUES (2, N'AMD', N'Ryzen 5 360 BOX', N'AM4', 6, 3600, N'DDR4', 16999.0000)
+GO
+INSERT [dbo].[Процессоры] ([Код], [Производитель], [Модель], [Сокет], [Кол-во ядер], [Частота], [Тип памяти], [Цена]) VALUES (3, N'AMD', N'Ryzen 7 2700X BOX', N'AM4', 8, 3700, N'DDR4', 17999.0000)
+GO
+INSERT [dbo].[Процессоры] ([Код], [Производитель], [Модель], [Сокет], [Кол-во ядер], [Частота], [Тип памяти], [Цена]) VALUES (4, N'AMD', N'Ryzen 7 PRO 3700 OEM', N'AM4', 8, 3600, N'DDR4', 23999.0000)
+GO
+INSERT [dbo].[Процессоры] ([Код], [Производитель], [Модель], [Сокет], [Кол-во ядер], [Частота], [Тип памяти], [Цена]) VALUES (5, N'Intel', N'Core i7-9700F BOX', N'LGA 1151-v2', 8, 3000, N'DDR4', 23999.0000)
+GO
+INSERT [dbo].[Процессоры] ([Код], [Производитель], [Модель], [Сокет], [Кол-во ядер], [Частота], [Тип памяти], [Цена]) VALUES (6, N'AMD', N'Ryzen 2600', N'AM4', 8, 3400, N'DDR4', 15000.0000)
+GO
+SET IDENTITY_INSERT [dbo].[Процессоры] OFF
+GO
+ALTER TABLE [dbo].[Client]  WITH CHECK ADD CHECK  (([IsAdmin]=(1) OR [IsAdmin]=(0)))
+GO

@@ -33,12 +33,9 @@ C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\SCN.exe
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\SCN.pdb
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\RegisterWindow.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\RegisterWindow.baml
-C:\Users\KuratovIA\source\repos\SCN\SCN\bin\Debug\SCNDB.mdf
-C:\Users\KuratovIA\source\repos\SCN\SCN\bin\Debug\SCNDB_log.ldf
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\XamlResources.baml
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\ComputerComponentsWindow.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\MainMenuWindow.g.cs
-C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\SCN_Content.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\ComputerComponentsWindow.baml
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\MainMenuWindow.baml
