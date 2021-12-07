@@ -1,6 +1,6 @@
-USE [SCNDB]
+USE [SCN]
 GO
-/****** Object:  Table [dbo].[Client]    Script Date: 25.11.2021 23:25:01 ******/
+/****** Object:  Table [dbo].[Client]    Script Date: 08.12.2021 0:39:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14,10 +14,10 @@ CREATE TABLE [dbo].[Client](
 PRIMARY KEY CLUSTERED 
 (
 	[Login] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SSD Накопители]    Script Date: 25.11.2021 23:25:01 ******/
+/****** Object:  Table [dbo].[SSD Накопители]    Script Date: 08.12.2021 0:39:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -32,10 +32,10 @@ CREATE TABLE [dbo].[SSD Накопители](
 PRIMARY KEY CLUSTERED 
 (
 	[Код] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Блоки питания]    Script Date: 25.11.2021 23:25:01 ******/
+/****** Object:  Table [dbo].[Блоки питания]    Script Date: 08.12.2021 0:39:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -50,10 +50,10 @@ CREATE TABLE [dbo].[Блоки питания](
 PRIMARY KEY CLUSTERED 
 (
 	[Код] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Видеокарты]    Script Date: 25.11.2021 23:25:01 ******/
+/****** Object:  Table [dbo].[Видеокарты]    Script Date: 08.12.2021 0:39:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -69,10 +69,10 @@ CREATE TABLE [dbo].[Видеокарты](
 PRIMARY KEY CLUSTERED 
 (
 	[Код] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Жесткие диски]    Script Date: 25.11.2021 23:25:01 ******/
+/****** Object:  Table [dbo].[Жесткие диски]    Script Date: 08.12.2021 0:39:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -87,10 +87,41 @@ CREATE TABLE [dbo].[Жесткие диски](
 PRIMARY KEY CLUSTERED 
 (
 	[Код] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Материнские платы]    Script Date: 25.11.2021 23:25:01 ******/
+/****** Object:  Table [dbo].[Заказы]    Script Date: 08.12.2021 0:39:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Заказы](
+	[Номер] [int] IDENTITY(1,1) NOT NULL,
+	[Номер клиента] [nvarchar](50) NULL,
+	[Тип комплектующего] [int] NULL,
+	[Модель] [nvarchar](80) NULL,
+	[Цена] [money] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Номер] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Комплектующие]    Script Date: 08.12.2021 0:39:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Комплектующие](
+	[id] [int] NOT NULL,
+	[Название комплетующего] [nvarchar](70) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Материнские платы]    Script Date: 08.12.2021 0:39:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -108,10 +139,10 @@ CREATE TABLE [dbo].[Материнские платы](
 PRIMARY KEY CLUSTERED 
 (
 	[Код] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Оперативная память]    Script Date: 25.11.2021 23:25:01 ******/
+/****** Object:  Table [dbo].[Оперативная память]    Script Date: 08.12.2021 0:39:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -126,10 +157,10 @@ CREATE TABLE [dbo].[Оперативная память](
 PRIMARY KEY CLUSTERED 
 (
 	[Код] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Процессоры]    Script Date: 25.11.2021 23:25:01 ******/
+/****** Object:  Table [dbo].[Процессоры]    Script Date: 08.12.2021 0:39:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -146,7 +177,7 @@ CREATE TABLE [dbo].[Процессоры](
 PRIMARY KEY CLUSTERED 
 (
 	[Код] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 INSERT [dbo].[Client] ([Login], [Password], [FIO], [Phone], [IsAdmin]) VALUES (N'kuratov', N'123', N'Куратов И. А.', N'89059350364', 0)
@@ -207,6 +238,48 @@ INSERT [dbo].[Жесткие диски] ([Код], [Производитель]
 GO
 SET IDENTITY_INSERT [dbo].[Жесткие диски] OFF
 GO
+SET IDENTITY_INSERT [dbo].[Заказы] ON 
+GO
+INSERT [dbo].[Заказы] ([Номер], [Номер клиента], [Тип комплектующего], [Модель], [Цена]) VALUES (4, N'kuratov', 2, N'Intel Core i5-10400 OEM', 14799.0000)
+GO
+INSERT [dbo].[Заказы] ([Номер], [Номер клиента], [Тип комплектующего], [Модель], [Цена]) VALUES (5, N'kuratov', 2, N'AMD Ryzen 7 PRO 3700 OEM', 23999.0000)
+GO
+INSERT [dbo].[Заказы] ([Номер], [Номер клиента], [Тип комплектующего], [Модель], [Цена]) VALUES (6, N'kuratov', 2, N'AMD Ryzen 2600', 15000.0000)
+GO
+INSERT [dbo].[Заказы] ([Номер], [Номер клиента], [Тип комплектующего], [Модель], [Цена]) VALUES (1002, N'kuratov', 2, N'AMD Ryzen 7 PRO 3700 OEM', 23999.0000)
+GO
+INSERT [dbo].[Заказы] ([Номер], [Номер клиента], [Тип комплектующего], [Модель], [Цена]) VALUES (2002, N'kuratov', 2, N'Intel Core i5-10400 OEM', 14799.0000)
+GO
+INSERT [dbo].[Заказы] ([Номер], [Номер клиента], [Тип комплектующего], [Модель], [Цена]) VALUES (2003, N'kuratov', 1, N'Seagate SkyHawk', 3799.0000)
+GO
+INSERT [dbo].[Заказы] ([Номер], [Номер клиента], [Тип комплектующего], [Модель], [Цена]) VALUES (2004, N'kuratov', 3, N'Aerocool SCAS PLUS', 4899.0000)
+GO
+INSERT [dbo].[Заказы] ([Номер], [Номер клиента], [Тип комплектующего], [Модель], [Цена]) VALUES (2005, N'kuratov', 3, N'Aerocool SCAS PLUS', 4899.0000)
+GO
+INSERT [dbo].[Заказы] ([Номер], [Номер клиента], [Тип комплектующего], [Модель], [Цена]) VALUES (2006, N'kuratov', 5, N'A-Data XPG Gammix D10', 3499.0000)
+GO
+INSERT [dbo].[Заказы] ([Номер], [Номер клиента], [Тип комплектующего], [Модель], [Цена]) VALUES (2007, N'kuratov', 7, N'Samsung 870 EVO', 5590.0000)
+GO
+INSERT [dbo].[Заказы] ([Номер], [Номер клиента], [Тип комплектующего], [Модель], [Цена]) VALUES (2008, N'kuratov', 6, N'MSI A320M PRO-E', 3799.0000)
+GO
+INSERT [dbo].[Заказы] ([Номер], [Номер клиента], [Тип комплектующего], [Модель], [Цена]) VALUES (2009, N'kuratov', 4, N'GIGABYTE GeForce GTX 1050 Ti OC LP', 18999.0000)
+GO
+SET IDENTITY_INSERT [dbo].[Заказы] OFF
+GO
+INSERT [dbo].[Комплектующие] ([id], [Название комплетующего]) VALUES (1, N'harddrive')
+GO
+INSERT [dbo].[Комплектующие] ([id], [Название комплетующего]) VALUES (2, N'CPU')
+GO
+INSERT [dbo].[Комплектующие] ([id], [Название комплетующего]) VALUES (3, N'psu')
+GO
+INSERT [dbo].[Комплектующие] ([id], [Название комплетующего]) VALUES (4, N'videocard')
+GO
+INSERT [dbo].[Комплектующие] ([id], [Название комплетующего]) VALUES (5, N'ram')
+GO
+INSERT [dbo].[Комплектующие] ([id], [Название комплетующего]) VALUES (6, N'systemboard')
+GO
+INSERT [dbo].[Комплектующие] ([id], [Название комплетующего]) VALUES (7, N'ssd')
+GO
 SET IDENTITY_INSERT [dbo].[Материнские платы] ON 
 GO
 INSERT [dbo].[Материнские платы] ([Код], [Производитель], [Модель], [Форм-фактор], [Сокет], [Чипсет], [Тип памяти], [Количество SATA], [Цена]) VALUES (1, N'ASUS', N'A68HM-PLUS', N'Micro-ATX', N'FM2+', N'AMD A68H', N'DDR3', 4, 4499.0000)
@@ -250,6 +323,12 @@ GO
 INSERT [dbo].[Процессоры] ([Код], [Производитель], [Модель], [Сокет], [Кол-во ядер], [Частота], [Тип памяти], [Цена]) VALUES (6, N'AMD', N'Ryzen 2600', N'AM4', 8, 3400, N'DDR4', 15000.0000)
 GO
 SET IDENTITY_INSERT [dbo].[Процессоры] OFF
+GO
+ALTER TABLE [dbo].[Заказы]  WITH CHECK ADD FOREIGN KEY([Номер клиента])
+REFERENCES [dbo].[Client] ([Login])
+GO
+ALTER TABLE [dbo].[Заказы]  WITH CHECK ADD FOREIGN KEY([Тип комплектующего])
+REFERENCES [dbo].[Комплектующие] ([id])
 GO
 ALTER TABLE [dbo].[Client]  WITH CHECK ADD CHECK  (([IsAdmin]=(1) OR [IsAdmin]=(0)))
 GO

@@ -14,14 +14,18 @@ using System.Data.SqlTypes;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using System.Web.UI.WebControls;
 
 namespace SCN.ComputerComponents
 {
     public class CPU : ComputerComponent
     {
         private RelayCommand _filterInfoCommand;
+        private RelayCommand _addOrderCommand;
 
         private string _filterCommand = "";
+        private string _orderCommand = "";
+
 
         private string _maker;
         private string _countCores;
@@ -29,6 +33,7 @@ namespace SCN.ComputerComponents
         private string _lastFrequency;
         private string _startPrice;
         private string _lastPrice;
+        private object _selectedComponent;
 
         public string Maker
         {
@@ -90,10 +95,32 @@ namespace SCN.ComputerComponents
             }
         }
 
+        public object SelectedComponent
+        {
+            get => _selectedComponent;
+            set
+            {
+                _selectedComponent = value;
+                //OnPropertyChanged(nameof(SelectedComponent));
+            }
+        }
+
         public CPU()
         {
             SetImage("CPU.jpg");
             UpdateInfo("Процессоры");
+        }
+
+        private void AddCPU()
+        {
+            string maker = (SelectedComponent as DataRowView).Row.ItemArray[1].ToString();
+            string model = (SelectedComponent as DataRowView).Row.ItemArray[2].ToString();
+            string resModel = maker + " " + model;
+            int price = Convert.ToInt32((SelectedComponent as DataRowView).Row.ItemArray[7]);
+
+            _orderCommand = $"insert into Заказы values ('kuratov', '2', '{resModel}', {price})";
+
+            AddOrder(_orderCommand);
         }
 
         private void FilterInfo()
@@ -156,5 +183,6 @@ namespace SCN.ComputerComponents
         }
 
         public RelayCommand FilterInfoCommand { get => _filterInfoCommand ?? (_filterInfoCommand = new RelayCommand(obj => FilterInfo())); }
+        public RelayCommand AddOrderCommand { get => _addOrderCommand ?? (_addOrderCommand = new RelayCommand(obj => AddCPU())); }
     }
 }

@@ -11,6 +11,7 @@ namespace SCN.ViewModels
         private RelayCommand _exitToStartWindowCommand;
         private RelayCommand _exitCommand;
         private RelayCommand _openComputerComponentsCommand;
+        private RelayCommand _openOrdersWindowCommand;
 
 
         public string SourceUri
@@ -36,9 +37,21 @@ namespace SCN.ViewModels
                    (_openComputerComponentsCommand = new RelayCommand(obj => OpenComputerComponents()));
         }
 
+        public RelayCommand OpenOrdersWindowCommand
+        {
+            get => _openOrdersWindowCommand ??
+                   (_openOrdersWindowCommand = new RelayCommand(obj => OpenOrdersWindow()));
+        }
+
         private void OpenComputerComponents()
         {
             Window w = new ComputerComponentsWindow();
+            w.ShowDialog();
+        }
+
+        private void OpenOrdersWindow()
+        {
+            Window w = new OrdersWindow();
             w.ShowDialog();
         }
 
