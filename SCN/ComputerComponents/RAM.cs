@@ -12,14 +12,17 @@ namespace SCN.ComputerComponents
     public class RAM : ComputerComponent
     {
         private RelayCommand _filterInfoCommand;
+        private RelayCommand _addOrderCommand;
 
         private string _filterCommand = "";
+        private string _orderCommand = "";
 
         private string _maker;
         private string _storageType;
         private string _storage;
         private string _startPrice;
         private string _lastPrice;
+        private object _selectedComponent;
 
         public string Maker
         {
@@ -71,10 +74,32 @@ namespace SCN.ComputerComponents
             }
         }
 
+        public object SelectedComponent
+        {
+            get => _selectedComponent;
+            set
+            {
+                _selectedComponent = value;
+                //OnPropertyChanged(nameof(SelectedComponent));
+            }
+        }
+
         public RAM()
         {
             SetImage("ram.jpg");
             UpdateInfo("Оперативная память");
+        }
+
+        private void AddRAM()
+        {
+            string maker = (SelectedComponent as DataRowView).Row.ItemArray[1].ToString();
+            string model = (SelectedComponent as DataRowView).Row.ItemArray[2].ToString();
+            string resModel = maker + " " + model;
+            int price = Convert.ToInt32((SelectedComponent as DataRowView).Row.ItemArray[5]);
+
+            _orderCommand = $"insert into Заказы values ('kuratov', '5', '{resModel}', {price})";
+
+            AddOrder(_orderCommand);
         }
 
         private void FilterInfo()
@@ -140,5 +165,7 @@ namespace SCN.ComputerComponents
         {
             get => _filterInfoCommand ?? (_filterInfoCommand = new RelayCommand(obj => FilterInfo()));
         }
+
+        public RelayCommand AddOrderCommand { get => _addOrderCommand ?? (_addOrderCommand = new RelayCommand(obj => AddRAM())); }
     }
 }

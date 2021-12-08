@@ -62,6 +62,13 @@ namespace SCN.ComputerComponents
             adapter.Fill(ComponentInfo);
         }
 
+        protected void AddOrder(string command)
+        {
+            _executedCommand = command;
+            SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")

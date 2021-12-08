@@ -25,6 +25,7 @@
                   FontSize="13"
                   Background="White"
                   BorderBrush="White"
+                  SelectedItem="{Binding SelectedComponent, Mode=TwoWay}"
                   ItemsSource="{Binding ComponentInfo.DefaultView, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
 
         <Grid Grid.Row="1">
@@ -114,7 +115,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0" Template="{StaticResource btnTemplate}" Command="{Binding FilterInfoCommand}" Content="Фильтрация" Margin="20"/>
-                <Button Grid.Row="1" Template="{StaticResource btnTemplate}" Content="В корзину" Margin="20"/>
+                <Button Grid.Row="1" Template="{StaticResource btnTemplate}" Command="{Binding AddOrderCommand}" Content="В корзину" Margin="20"/>
             </Grid>
         </Grid>
     </Grid>
