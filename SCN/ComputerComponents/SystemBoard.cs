@@ -89,7 +89,7 @@ namespace SCN.ComputerComponents
 
         public SystemBoard()
         {
-            SetImage("systemboard.jpg");
+            SetImage("../../img/systemboard.jpg");
             UpdateInfo("Материнские платы");
         }
 

@@ -74,7 +74,7 @@ namespace SCN.ComputerComponents
 
         public HardDrive()
         {
-            SetImage("harddrive.jpg");
+            SetImage("../../img/harddrive.jpg");
             UpdateInfo("Жесткие диски");
         }
 

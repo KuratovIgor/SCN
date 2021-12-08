@@ -86,7 +86,7 @@ namespace SCN.ComputerComponents
 
         public RAM()
         {
-            SetImage("ram.jpg");
+            SetImage("../../img/ram.jpg");
             UpdateInfo("Оперативная память");
         }
 

@@ -90,7 +90,7 @@ namespace SCN.ComputerComponents
 
         public Videocard()
         {
-            SetImage("videocard.jpg");
+            SetImage("../../img/videocard.jpg");
             UpdateInfo("Видеокарты");
         }
 

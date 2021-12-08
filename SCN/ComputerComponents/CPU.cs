@@ -107,7 +107,7 @@ namespace SCN.ComputerComponents
 
         public CPU()
         {
-            SetImage("CPU.jpg");
+            SetImage("../../img/CPU.jpg");
             UpdateInfo("Процессоры");
         }
 

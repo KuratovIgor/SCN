@@ -84,7 +84,7 @@ namespace SCN.ComputerComponents
 
         public PSU()
         {
-            SetImage("psu.jpg");
+            SetImage("../../img/psu.jpg");
             UpdateInfo("Блоки питания");
         }
 

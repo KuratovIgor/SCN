@@ -16,7 +16,7 @@ namespace SCN.ViewModels
 
         public string SourceUri
         {
-            get => Path.GetFullPath("mainimage.jpg");
+            get => Path.GetFullPath("../../img/mainimage.jpg");
         }
 
         public RelayCommand ExitToStartWindowCommand

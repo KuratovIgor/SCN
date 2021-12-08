@@ -6,37 +6,55 @@
         xmlns:local="clr-namespace:SCN.Windows"
         xmlns:vm="clr-namespace:SCN.ViewModels"
         mc:Ignorable="d"
-        Title="Заказы" Height="500" Width="800">
+        Title="Заказы" MaxHeight="700" MaxWidth="1200" MinHeight="700" MinWidth="1200">
     
     <Window.DataContext>
         <vm:OrdersViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.7*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         
 
-        <ListBox Grid.Column="0" ItemsSource="{Binding Orders, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+        <ListBox Grid.Column="0"  ItemsSource="{Binding Orders, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="6">
+                        <Grid Width="550" Height="80">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
 
-                        <Image Grid.Column="0" Source="{Binding SourceUri}"></Image>
-                        <StackPanel Grid.Column="1">
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                            <TextBlock Text="{Binding Price}"></TextBlock>
-                        </StackPanel>
-                        
-                    </Grid>
+                            <Image Grid.Column="0" Source="{Binding SourceUri}"></Image>
+
+                            <StackPanel Grid.Column="1">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Модель: " FontSize="20" FontFamily ="Futura PT"></TextBlock>
+                                    <TextBlock Text="{Binding Name}" FontSize="20"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Цена: " FontSize="20" FontFamily ="Futura PT"></TextBlock>
+                                    <TextBlock Text="{Binding Price}" FontSize="20"></TextBlock>
+                                    <TextBlock Text=" руб" FontSize="25" FontFamily ="Futura PT"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal" >
+           <TextBlock Text="Сумма заказа " FontSize="25" FontFamily ="Futura PT"></TextBlock>
+            <TextBlock Text="{Binding SumPrice, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"  FontSize="25" FontFamily ="Futura PT"></TextBlock>
+            <TextBlock Text=" руб" FontSize="25" FontFamily ="Futura PT"></TextBlock>
+        </StackPanel>
+           
     </Grid>
     
 </Window>

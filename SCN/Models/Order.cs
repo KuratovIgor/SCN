@@ -39,13 +39,12 @@ namespace SCN.Models
             using (SqlDataReader reader = sqlCommand.ExecuteReader())
             {
                 reader.Read();
-                SourceUri = Path.GetFullPath($"{reader.GetValue(0) as string}.jpg");
+                SourceUri = Path.GetFullPath($"../../img/{reader.GetValue(0) as string}.jpg");
             }
                 
                  
            _sqlConnection.Close();
-
         }
-        
+
     }
 }

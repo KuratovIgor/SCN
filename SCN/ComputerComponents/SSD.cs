@@ -85,7 +85,7 @@ namespace SCN.ComputerComponents
 
         public SSD()
         {
-            SetImage("ssd.jpg");
+            SetImage("../../img/ssd.jpg");
             UpdateInfo("SSD накопители");
         }
 

@@ -1,4 +1,6 @@
-bin/
-Debug/
-.vs/
-.idea/
+.vs*
+.idea*
+/**/bin/Debug
+*/**/bin/Release
+*/**/obj/Debug
+*/**/obj/Release
