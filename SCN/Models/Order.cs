@@ -15,17 +15,20 @@ namespace SCN.Models
             new SqlConnection(ConfigurationManager.ConnectionStrings["SCNDB"].ConnectionString);
 
         protected string _executedCommand;
+
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
         public string SourceUri { get; set; }
 
         private int _typeComponent;
 
-        public Order(string name, int price, int typeComponent)
+        public Order(string name, int price, int typeComponent, int id)
         {
             Name = name;
             Price = price;
             _typeComponent = typeComponent;
+            Id = id;
             LoadImage();
         }
 
@@ -41,8 +44,7 @@ namespace SCN.Models
                 reader.Read();
                 SourceUri = Path.GetFullPath($"../../img/{reader.GetValue(0) as string}.jpg");
             }
-                
-                 
+                            
            _sqlConnection.Close();
         }
 

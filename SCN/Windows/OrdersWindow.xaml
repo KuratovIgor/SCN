@@ -11,18 +11,24 @@
     <Window.DataContext>
         <vm:OrdersViewModel/>
     </Window.DataContext>
+    
+    <Window.Resources>
+        <ResourceDictionary Source="../XamlResources.xaml"></ResourceDictionary>
+    </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
 
-        <ListBox Grid.Column="0"  ItemsSource="{Binding Orders, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+
+
+        <ListBox SelectedItem="{Binding SelectedComponent, Mode=TwoWay}" Grid.Column="0"  ItemsSource="{Binding Orders, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1" CornerRadius="6">
-                        <Grid Width="550" Height="80">
+                        <Grid Width="875" Height="80">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
                                 <ColumnDefinition/>
@@ -46,15 +52,20 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
-
-
-        <StackPanel Grid.Column="1" Orientation="Horizontal" >
-           <TextBlock Text="Сумма заказа " FontSize="25" FontFamily ="Futura PT"></TextBlock>
-            <TextBlock Text="{Binding SumPrice, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"  FontSize="25" FontFamily ="Futura PT"></TextBlock>
-            <TextBlock Text=" руб" FontSize="25" FontFamily ="Futura PT"></TextBlock>
+        
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="Сумма заказа " FontSize="25" FontFamily ="Futura PT"></TextBlock>
+                <TextBlock Text="{Binding SumPrice, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"  FontSize="25" FontFamily ="Futura PT"></TextBlock>
+                <TextBlock Text=" руб" FontSize="25" FontFamily ="Futura PT"></TextBlock>
+            </StackPanel>
+ 
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="Кол-во товаров " FontSize="25" FontFamily ="Futura PT"></TextBlock>
+                <TextBlock Text="{Binding CountOrders, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" FontSize="25" FontFamily ="Futura PT"></TextBlock>
+            </StackPanel>
+            <Button Content ="Удалить"  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding DeleteOrderCommand}" ></Button>
         </StackPanel>
-           
     </Grid>
     
 </Window>

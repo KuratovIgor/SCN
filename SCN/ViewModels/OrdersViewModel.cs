@@ -20,7 +20,10 @@ namespace SCN.ViewModels
 
         protected string _executedCommand;
         private int _sumPrice;
-
+        private int _countOrders;
+        private Order _selectedComponent;
+        private string _orderCommand = "";
+        private RelayCommand _deleteOrderCommand;
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order> { };
         public int SumPrice
         {
@@ -32,11 +35,38 @@ namespace SCN.ViewModels
             }
         }
 
+        public int CountOrders
+        {
+            get => Orders.Count;
+            set
+            {
+                _countOrders = value;
+                OnPropertyChanged(nameof(CountOrders));
+            }
+        }
+
+        public Order SelectedComponent
+        {
+            get => _selectedComponent;
+            set
+            {
+                _selectedComponent = value;
+                //OnPropertyChanged(nameof(SelectedComponent));
+            }
+        }
+
         public OrdersViewModel()
         {
+            UpdateOrders();
+        }
+     
+        public void UpdateOrders()
+        {
+            Orders.Clear();
+
             _sqlConnection.Open();
 
-            _executedCommand = $"select Модель, Цена, [Тип комплектующего] from Заказы where [Номер клиента] = 'kuratov'";
+            _executedCommand = $"select Номер, Модель, Цена, [Тип комплектующего] from Заказы where [Номер клиента] = 'kuratov'";
 
             SqlCommand sqlCommand = new SqlCommand(_executedCommand, _sqlConnection);
 
@@ -44,16 +74,33 @@ namespace SCN.ViewModels
             {
                 while (reader.Read())
                 {
-                    string name = reader.GetValue(0) as string;
-                    int price = Convert.ToInt32(reader.GetValue(1));
-                    int typeComponent = Convert.ToInt32(reader.GetValue(2));
-                    Orders.Add(new Order(name, price, typeComponent));
+                    int id = Convert.ToInt32(reader.GetValue(0));
+                    string name = reader.GetValue(1) as string;
+                    int price = Convert.ToInt32(reader.GetValue(2));
+                    int typeComponent = Convert.ToInt32(reader.GetValue(3));
+                    Orders.Add(new Order(name, price, typeComponent, id));
                 }
             }
+            CalculateSumPrice();
+            CountOrders = Orders.Count;
+            _sqlConnection.Close();
+
+        }
+
+        public void DeleteOrder()
+        {
+            _sqlConnection.Open();
+            int id = SelectedComponent.Id;
+
+            _orderCommand = $"delete from Заказы where [Номер клиента] = 'kuratov' and Номер = {id} ";
+
+            SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
+            sqlCommand.ExecuteNonQuery();
 
             _sqlConnection.Close();
 
-            CalculateSumPrice();
+            UpdateOrders();
+
         }
 
         public void CalculateSumPrice()
@@ -72,6 +119,7 @@ namespace SCN.ViewModels
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+        public RelayCommand DeleteOrderCommand { get => _deleteOrderCommand ?? (_deleteOrderCommand = new RelayCommand(obj => DeleteOrder())); }
 
     }
 }
