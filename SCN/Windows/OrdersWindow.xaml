@@ -29,8 +29,16 @@
 
                         <Image Grid.Column="0" Source="{Binding SourceUri}"></Image>
                         <StackPanel Grid.Column="1">
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                            <TextBlock Text="{Binding Price}"></TextBlock>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text ="Модель: "></TextBlock>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                            </StackPanel>
+                        
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text ="Цена: "></TextBlock>
+                                <TextBlock Text="{Binding Price}"></TextBlock>
+                            </StackPanel>
                         </StackPanel>
                         
                     </Grid>

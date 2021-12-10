@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Xab\source\repos\SCN\SCN\obj\Debug\
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\
 SCN
 none
 false
 DEBUG;TRACE
-C:\Users\Xab\source\repos\SCN\SCN\App.xaml
-141217670891
+C:\Users\KuratovIA\source\repos\SCN\SCN\App.xaml
+15286495254
 
-321257645330
-11-629299747
-MainWindow.xaml;UserControls\CpuWindow.xaml;UserControls\HardDriveWindow.xaml;UserControls\PsuWindow.xaml;UserControls\RamWindow.xaml;UserControls\SsdWindow.xaml;UserControls\SystemBoardWindow.xaml;UserControls\VideocardWindow.xaml;Windows\AuthorizationWindow.xaml;Windows\ComputerComponentsWindow.xaml;Windows\MainMenuWindow.xaml;Windows\OrdersWindow.xaml;Windows\RegisterWindow.xaml;XamlResources.xaml;
+36-1742289325
+11-634722939
+MainWindow.xaml;UserControls\CpuWindow.xaml;UserControls\HardDriveWindow.xaml;UserControls\PsuWindow.xaml;UserControls\RamWindow.xaml;UserControls\SsdWindow.xaml;UserControls\SystemBoardWindow.xaml;UserControls\VideocardWindow.xaml;Windows\AuthorizationWindow.xaml;Windows\ChoosePcWindow.xaml;Windows\ComputerComponentsWindow.xaml;Windows\MainMenuWindow.xaml;Windows\OrdersWindow.xaml;Windows\RegisterWindow.xaml;XamlResources.xaml;
 
 False
 

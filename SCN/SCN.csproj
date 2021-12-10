@@ -75,6 +75,8 @@
     <Compile Include="ComputerComponents\SSD.cs" />
     <Compile Include="ComputerComponents\SystemBoard.cs" />
     <Compile Include="ComputerComponents\Videocard.cs" />
+    <Compile Include="Models\Assembly.cs" />
+    <Compile Include="Models\Configurator.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\RelayCommand.cs" />
     <Compile Include="Models\User.cs" />
@@ -101,11 +103,15 @@
     </Compile>
     <Compile Include="ViewModels\AuthorizationViewModel.cs" />
     <Compile Include="ViewModels\ComputerComponentsViewModel.cs" />
+    <Compile Include="ViewModels\ConfiguratorViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\OrdersViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="Windows\AuthorizationWindow.xaml.cs">
       <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ChoosePcWindow.xaml.cs">
+      <DependentUpon>ChoosePcWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ComputerComponentsWindow.xaml.cs">
       <DependentUpon>ComputerComponentsWindow.xaml</DependentUpon>
@@ -160,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AuthorizationWindow.xaml" />
+    <Page Include="Windows\ChoosePcWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\ComputerComponentsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

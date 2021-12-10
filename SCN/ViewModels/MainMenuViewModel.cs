@@ -12,6 +12,7 @@ namespace SCN.ViewModels
         private RelayCommand _exitCommand;
         private RelayCommand _openComputerComponentsCommand;
         private RelayCommand _openOrdersWindowCommand;
+        private RelayCommand _openConfiguratorCommand;
 
 
         public string SourceUri
@@ -43,6 +44,12 @@ namespace SCN.ViewModels
                    (_openOrdersWindowCommand = new RelayCommand(obj => OpenOrdersWindow()));
         }
 
+        public RelayCommand OpenConfiguratorCommand
+        {
+            get => _openConfiguratorCommand ??
+                   (_openConfiguratorCommand = new RelayCommand(obj => OpenConfigurator()));
+        }
+
         private void OpenComputerComponents()
         {
             Window w = new ComputerComponentsWindow();
@@ -68,6 +75,12 @@ namespace SCN.ViewModels
         {
             var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
             window.Close();
+        }
+
+        private void OpenConfigurator()
+        {
+            ChoosePcWindow w = new ChoosePcWindow();
+            w.ShowDialog();
         }
     }
 }

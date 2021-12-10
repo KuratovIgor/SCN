@@ -1,0 +1,46 @@
+﻿<Window x:Class="SCN.Windows.ChoosePcWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SCN.Windows"
+        xmlns:vm="clr-namespace:SCN.ViewModels"
+        mc:Ignorable="d"
+        Title="Конфигуратор" Height="400" Width="400">
+    <Window.DataContext>
+        <vm:ConfiguratorViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <ResourceDictionary Source="../XamlResources.xaml"></ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="LightCyan">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" BorderBrush="Black" Header="Для каких цели вам нужен ПК?" HorizontalAlignment="Center" FontSize="20">
+            <StackPanel>
+                <RadioButton Content="Для офисной работы" IsChecked="{Binding IsForOffice}" FontSize="20"/>
+                <RadioButton Content="Для разработки" IsChecked="{Binding IsForDevelopment}" FontSize="20"/>
+                <RadioButton Content="Для игр" IsChecked="{Binding IsForGames}" FontSize="20"/>
+            </StackPanel>
+        </GroupBox>
+
+        <TextBlock Grid.Row="1" Text="До какой цены собрать компьютер?"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Text="{Binding Price, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <TextBlock Grid.Column="1" Text="Руб" Margin="10"/>
+        </Grid>
+
+        <Button Grid.Row="3" Content="Собрать ПК" 
+                Template="{StaticResource btnTemplate}"
+                Command="{Binding CreateCommand}"/>
+    </Grid>
+</Window>
