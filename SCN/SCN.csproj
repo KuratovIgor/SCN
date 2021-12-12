@@ -67,6 +67,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminVersion\UserControls\AddCpuUC.xaml.cs">
+      <DependentUpon>AddCpuUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVersion\ViewModels\MainAdminViewModel.cs" />
+    <Compile Include="AdminVersion\Windows\AddProductWindow.xaml.cs">
+      <DependentUpon>AddProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVersion\Windows\MainAdminWindow.xaml.cs">
+      <DependentUpon>MainAdminWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ComputerComponents\ComputerComponent.cs" />
     <Compile Include="ComputerComponents\CPU.cs" />
     <Compile Include="ComputerComponents\HardDrive.cs" />
@@ -125,6 +135,18 @@
     <Compile Include="Windows\RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdminVersion\UserControls\AddCpuUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminVersion\Windows\AddProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminVersion\Windows\MainAdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -217,8 +239,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Source\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

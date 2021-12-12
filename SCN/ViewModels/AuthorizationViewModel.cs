@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Linq;
+using SCN.AdminVersion.Windows;
 
 namespace SCN.ViewModels
 {
@@ -69,10 +70,12 @@ namespace SCN.ViewModels
 
             //if (isUserExists)
             //{
+                User.IsAdmin = 0;
+                
                 var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
                 window.Close();
 
-                MainMenuWindow mw = new MainMenuWindow();
+                Window mw = new MainMenuWindow();
                 mw.ShowDialog();
             //}
             //else
@@ -83,11 +86,20 @@ namespace SCN.ViewModels
 
         private void RegisterClient()
         {
-            RegisterWindow w = new RegisterWindow();
+            Window w = new RegisterWindow();
             w.ShowDialog();
         }
-        
-        private void EntryAsAdmin() { }
+
+        private void EntryAsAdmin()
+        {
+            User.IsAdmin = 1;
+
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+            window.Close();
+
+            Window wn = new MainAdminWindow();
+            wn.ShowDialog();
+        }
         
         
         

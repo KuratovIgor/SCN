@@ -11,9 +11,11 @@ namespace SCN.ComputerComponents
     {
         private RelayCommand _filterInfoCommand;
         private RelayCommand _addOrderCommand;
+        private RelayCommand _removeCommand;
 
         private string _filterCommand = "";
         private string _orderCommand = "";
+        private string _removeSqlCommand = "";
 
         private string _maker;
         private string _storage;
@@ -74,7 +76,7 @@ namespace SCN.ComputerComponents
 
         public HardDrive()
         {
-            SetImage("harddrive.jpg");
+            SetImage("../../img/harddrive.jpg");
             UpdateInfo("Жесткие диски");
         }
 
@@ -88,6 +90,14 @@ namespace SCN.ComputerComponents
             _orderCommand = $"insert into Заказы values ('kuratov', '1', '{resModel}', {price})";
 
             AddOrder(_orderCommand);
+        }
+
+        private void RemoveCpu()
+        {
+            string model = (SelectedComponent as DataRowView).Row.ItemArray[2].ToString();
+            _removeSqlCommand = $"delete from [Жесткие диски] where Модель = '{model}'";
+            RemoveProduct(_removeSqlCommand);
+            UpdateInfo("Жесткие диски");
         }
 
         private void FilterInfo()
@@ -143,5 +153,6 @@ namespace SCN.ComputerComponents
         }
 
         public RelayCommand AddOrderCommand { get => _addOrderCommand ?? (_addOrderCommand = new RelayCommand(obj => AddHardDrive())); }
+        public RelayCommand RemoveCommand { get => _removeCommand ?? (_removeCommand = new RelayCommand(obj => RemoveCpu())); }
     }
 }

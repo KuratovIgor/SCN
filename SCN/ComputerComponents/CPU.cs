@@ -22,9 +22,11 @@ namespace SCN.ComputerComponents
     {
         private RelayCommand _filterInfoCommand;
         private RelayCommand _addOrderCommand;
+        private RelayCommand _removeCommand;
 
-        private string _filterCommand = "";
-        private string _orderCommand = "";
+        private string _filterSqlCommand = "";
+        private string _orderSqlCommand = "";
+        private string _removeSqlCommand = "";
 
 
         private string _maker;
@@ -107,7 +109,7 @@ namespace SCN.ComputerComponents
 
         public CPU()
         {
-            SetImage("CPU.jpg");
+            SetImage("../../img/CPU.jpg");
             UpdateInfo("Процессоры");
         }
 
@@ -118,9 +120,17 @@ namespace SCN.ComputerComponents
             string resModel = maker + " " + model;
             int price = Convert.ToInt32((SelectedComponent as DataRowView).Row.ItemArray[7]);
 
-            _orderCommand = $"insert into Заказы values ('kuratov', '2', '{resModel}', {price})";
+            _orderSqlCommand = $"insert into Заказы values ('kuratov', '2', '{resModel}', {price})";
 
-            AddOrder(_orderCommand);
+            AddOrder(_orderSqlCommand);
+        }
+
+        private void RemoveCpu()
+        {
+            string model = (SelectedComponent as DataRowView).Row.ItemArray[2].ToString();
+            _removeSqlCommand = $"delete from Процессоры where Модель = '{model}'";
+            RemoveProduct(_removeSqlCommand);
+            UpdateInfo("Процессоры");
         }
 
         private void FilterInfo()
@@ -130,22 +140,22 @@ namespace SCN.ComputerComponents
             FilterFrequency();
             FilterPrice();
 
-            if (_filterCommand == "")
-                _filterCommand = "select * from Процессоры";
+            if (_filterSqlCommand == "")
+                _filterSqlCommand = "select * from Процессоры";
 
-            FilterTheInfo(_filterCommand);
+            FilterTheInfo(_filterSqlCommand);
 
-            _filterCommand = "";
+            _filterSqlCommand = "";
         }
 
         private void FilterMaker()
         {
             if (!string.IsNullOrWhiteSpace(Maker))
             {
-                if (_filterCommand == "")
-                    _filterCommand = $"select * from Процессоры where Производитель like '%{Maker}%'";
+                if (_filterSqlCommand == "")
+                    _filterSqlCommand = $"select * from Процессоры where Производитель like '%{Maker}%'";
                 else
-                    _filterCommand += $" and Производитель like '%{Maker}%'";
+                    _filterSqlCommand += $" and Производитель like '%{Maker}%'";
             }
         }
 
@@ -153,10 +163,10 @@ namespace SCN.ComputerComponents
         {
             if (!string.IsNullOrWhiteSpace(CountCores))
             {
-                if (_filterCommand == "")
-                    _filterCommand = $"select * from Процессоры where [Кол-во ядер] = {CountCores}";
+                if (_filterSqlCommand == "")
+                    _filterSqlCommand = $"select * from Процессоры where [Кол-во ядер] = {CountCores}";
                 else
-                    _filterCommand += $" and [Кол-во ядер] = {CountCores}";
+                    _filterSqlCommand += $" and [Кол-во ядер] = {CountCores}";
             }
         }
 
@@ -164,10 +174,10 @@ namespace SCN.ComputerComponents
         {
             if (!string.IsNullOrWhiteSpace(StartFrequency) && !string.IsNullOrWhiteSpace(LastFrequency) && Convert.ToInt32(StartFrequency) <= Convert.ToInt32(LastFrequency))
             {
-                if (_filterCommand == "")
-                    _filterCommand = $"select * from Процессоры where {StartFrequency} <= Частота and Частота <= {LastFrequency}";
+                if (_filterSqlCommand == "")
+                    _filterSqlCommand = $"select * from Процессоры where {StartFrequency} <= Частота and Частота <= {LastFrequency}";
                 else
-                    _filterCommand += $" and {StartFrequency} <= Частота and Частота <= { LastFrequency}";
+                    _filterSqlCommand += $" and {StartFrequency} <= Частота and Частота <= { LastFrequency}";
             }
         }
 
@@ -175,14 +185,15 @@ namespace SCN.ComputerComponents
         {
             if (!string.IsNullOrWhiteSpace(StartPrice) && !string.IsNullOrWhiteSpace(LastPrice) && Convert.ToInt32(StartPrice) <= Convert.ToInt32(LastPrice))
             {
-                if (_filterCommand == "")
-                    _filterCommand = $"select * from Процессоры where {StartPrice} <= Цена and Цена <= {LastPrice}";
+                if (_filterSqlCommand == "")
+                    _filterSqlCommand = $"select * from Процессоры where {StartPrice} <= Цена and Цена <= {LastPrice}";
                 else
-                    _filterCommand += $" and {StartPrice} <= Цена and Цена <= {LastPrice}";
+                    _filterSqlCommand += $" and {StartPrice} <= Цена and Цена <= {LastPrice}";
             }
         }
 
         public RelayCommand FilterInfoCommand { get => _filterInfoCommand ?? (_filterInfoCommand = new RelayCommand(obj => FilterInfo())); }
         public RelayCommand AddOrderCommand { get => _addOrderCommand ?? (_addOrderCommand = new RelayCommand(obj => AddCPU())); }
+        public RelayCommand RemoveCommand { get => _removeCommand ?? (_removeCommand = new RelayCommand(obj => RemoveCpu())); }
     }
 }

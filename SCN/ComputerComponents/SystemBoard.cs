@@ -16,6 +16,8 @@ namespace SCN.ComputerComponents
     {
         private RelayCommand _filterInfoCommand;
         private RelayCommand _addOrderCommand;
+        private RelayCommand _removeCommand;
+        private string _removeSqlCommand = "";
 
         private string _filterCommand = "";
         private string _orderCommand = "";
@@ -89,7 +91,7 @@ namespace SCN.ComputerComponents
 
         public SystemBoard()
         {
-            SetImage("systemboard.jpg");
+            SetImage("../../img/systemboard.jpg");
             UpdateInfo("Материнские платы");
         }
 
@@ -103,6 +105,14 @@ namespace SCN.ComputerComponents
             _orderCommand = $"insert into Заказы values ('kuratov', '6', '{resModel}', {price})";
 
             AddOrder(_orderCommand);
+        }
+
+        private void RemoveCpu()
+        {
+            string model = (SelectedComponent as DataRowView).Row.ItemArray[2].ToString();
+            _removeSqlCommand = $"delete from [Материнские платы] where Модель = '{model}'";
+            RemoveProduct(_removeSqlCommand);
+            UpdateInfo("Материнские платы");
         }
 
         private void FilterInfo()
@@ -170,5 +180,6 @@ namespace SCN.ComputerComponents
         }
 
         public RelayCommand AddOrderCommand { get => _addOrderCommand ?? (_addOrderCommand = new RelayCommand(obj => AddSystemBoard())); }
+        public RelayCommand RemoveCommand { get => _removeCommand ?? (_removeCommand = new RelayCommand(obj => RemoveCpu())); }
     }
 }

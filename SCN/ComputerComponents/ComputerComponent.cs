@@ -9,16 +9,19 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Windows.Media;
 using System.Xml.Serialization;
 
 namespace SCN.ComputerComponents
 {
     public abstract class ComputerComponent : INotifyPropertyChanged
     {
+        private bool _isUser;
+        private string _visible;
+        private string _adminVisible;
+
         protected SqlConnection _sqlConnection =
             new SqlConnection(ConfigurationManager.ConnectionStrings["SCNDB"].ConnectionString);
-
-        protected string _executedCommand;
 
         public string SourceUri { get; set; }
 
@@ -33,9 +36,52 @@ namespace SCN.ComputerComponents
             }
         }
 
+        public bool IsUser
+        {
+            get => _isUser;
+            set
+            {
+                _isUser = value;
+                OnPropertyChanged(nameof(IsUser));
+            }
+        }
+
+        public string Visible
+        {
+            get => _visible;
+            set
+            {
+                _visible = value;
+                OnPropertyChanged(nameof(Visible));
+            }
+        }
+
+        public string AdminVisible
+        {
+            get => _adminVisible;
+            set
+            {
+                _adminVisible = value;
+                OnPropertyChanged(nameof(AdminVisible));
+            }
+        }
+
         public ComputerComponent()
         {
             _sqlConnection.Open();
+
+            if (User.IsAdmin == 1)
+            {
+                IsUser = false;
+                Visible = "Hidden";
+                AdminVisible = "Visible";
+            }
+            else
+            {
+                IsUser = true;
+                Visible = "Visible";
+                AdminVisible = "Hidden";
+            }
         }
 
         public void SetImage(string path)
@@ -45,26 +91,34 @@ namespace SCN.ComputerComponents
 
         protected void UpdateInfo(string nameComponent)
         {
-            _executedCommand = $"select * from [{nameComponent}]";
+            string executedCommand = $"select * from [{nameComponent}]";
 
-            ComponentInfo = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(_executedCommand, _sqlConnection);
+            if (ComponentInfo == null)
+                ComponentInfo = new DataTable();
+
+            ComponentInfo.Clear();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(executedCommand, _sqlConnection);
             adapter.Fill(ComponentInfo);
         }
 
         protected void FilterTheInfo(string command)
         {
-            _executedCommand = command;
             SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
 
             ComponentInfo.Clear();
-            SqlDataAdapter adapter = new SqlDataAdapter(_executedCommand, _sqlConnection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command, _sqlConnection);
             adapter.Fill(ComponentInfo);
         }
 
         protected void AddOrder(string command)
         {
-            _executedCommand = command;
+            SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+        }
+
+        protected void RemoveProduct(string command)
+        {
             SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
             sqlCommand.ExecuteNonQuery();
         }

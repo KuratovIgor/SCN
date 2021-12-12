@@ -98,5 +98,10 @@ C:\Users\Xab\source\repos\SCN\SCN\obj\Debug\Windows\OrdersWindow.baml
 C:\Users\Xab\source\repos\SCN\SCN\obj\Debug\SCN.csproj.AssemblyReference.cache
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\OrdersWindow.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\OrdersWindow.baml
+<<<<<<< HEAD
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\ChoosePcWindow.g.cs
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\ChoosePcWindow.baml
+=======
+>>>>>>> basket
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\AdminVersion\Windows\MainAdminWindow.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\AdminVersion\Windows\MainAdminWindow.baml

@@ -11,9 +11,11 @@ namespace SCN.ComputerComponents
     {
         private RelayCommand _filterInfoCommand;
         private RelayCommand _addOrderCommand;
+        private RelayCommand _removeCommand;
 
         private string _filterCommand = "";
         private string _orderCommand = "";
+        private string _removeSqlCommand = "";
 
         private string _maker;
         private string _formFactor;
@@ -84,7 +86,7 @@ namespace SCN.ComputerComponents
 
         public PSU()
         {
-            SetImage("psu.jpg");
+            SetImage("../../img/psu.jpg");
             UpdateInfo("Блоки питания");
         }
 
@@ -98,6 +100,14 @@ namespace SCN.ComputerComponents
             _orderCommand = $"insert into Заказы values ('kuratov', '3', '{resModel}', {price})";
 
             AddOrder(_orderCommand);
+        }
+
+        private void RemoveCpu()
+        {
+            string model = (SelectedComponent as DataRowView).Row.ItemArray[2].ToString();
+            _removeSqlCommand = $"delete from [Блоки питания] where Модель = '{model}'";
+            RemoveProduct(_removeSqlCommand);
+            UpdateInfo("Блоки питания");
         }
 
         private void FilterInfo()
@@ -159,5 +169,6 @@ namespace SCN.ComputerComponents
             get => _filterInfoCommand ?? (_filterInfoCommand = new RelayCommand(obj => FilterInfo()));
         }
         public RelayCommand AddOrderCommand { get => _addOrderCommand ?? (_addOrderCommand = new RelayCommand(obj => AddPSU())); }
+        public RelayCommand RemoveCommand { get => _removeCommand ?? (_removeCommand = new RelayCommand(obj => RemoveCpu())); }
     }
 }
