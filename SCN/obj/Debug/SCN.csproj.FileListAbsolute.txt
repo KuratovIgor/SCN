@@ -96,3 +96,5 @@ C:\Users\Xab\source\repos\SCN\SCN\obj\Debug\SCN.pdb
 C:\Users\Xab\source\repos\SCN\SCN\obj\Debug\Windows\OrdersWindow.g.cs
 C:\Users\Xab\source\repos\SCN\SCN\obj\Debug\Windows\OrdersWindow.baml
 C:\Users\Xab\source\repos\SCN\SCN\obj\Debug\SCN.csproj.AssemblyReference.cache
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\OrdersWindow.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\Windows\OrdersWindow.baml

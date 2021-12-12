@@ -65,6 +65,7 @@
                 <TextBlock Text="{Binding CountOrders, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" FontSize="25" FontFamily ="Futura PT"></TextBlock>
             </StackPanel>
             <Button Content ="Удалить"  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding DeleteOrderCommand}" ></Button>
+            <Button Content ="Удалить все "  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding AllDeleteOrderCommand }" ></Button>
         </StackPanel>
     </Grid>
     

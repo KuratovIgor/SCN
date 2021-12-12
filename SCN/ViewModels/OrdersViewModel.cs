@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows;
 
 namespace SCN.ViewModels
 {
@@ -24,6 +25,7 @@ namespace SCN.ViewModels
         private Order _selectedComponent;
         private string _orderCommand = "";
         private RelayCommand _deleteOrderCommand;
+        private RelayCommand _allDeleteOrderCommand;
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order> { };
         public int SumPrice
         {
@@ -89,10 +91,32 @@ namespace SCN.ViewModels
 
         public void DeleteOrder()
         {
-            _sqlConnection.Open();
-            int id = SelectedComponent.Id;
+            try
+            {
+                _sqlConnection.Open();
+                int id = SelectedComponent.Id;
 
-            _orderCommand = $"delete from Заказы where [Номер клиента] = 'kuratov' and Номер = {id} ";
+                _orderCommand = $"delete from Заказы where [Номер клиента] = 'kuratov' and Номер = {id} ";
+
+                SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
+                sqlCommand.ExecuteNonQuery();
+
+                _sqlConnection.Close();
+
+                UpdateOrders();
+            }
+            catch (Exception)
+            {
+                if (_sqlConnection.State == ConnectionState.Open)
+                    _sqlConnection.Close();
+            }
+        }
+
+        public void AllDeleteOrders()
+        {
+            _sqlConnection.Open();
+
+            _orderCommand = $"delete from Заказы where [Номер клиента] = 'kuratov' ";
 
             SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
             sqlCommand.ExecuteNonQuery();
@@ -100,7 +124,6 @@ namespace SCN.ViewModels
             _sqlConnection.Close();
 
             UpdateOrders();
-
         }
 
         public void CalculateSumPrice()
@@ -120,6 +143,7 @@ namespace SCN.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
         public RelayCommand DeleteOrderCommand { get => _deleteOrderCommand ?? (_deleteOrderCommand = new RelayCommand(obj => DeleteOrder())); }
+        public RelayCommand AllDeleteOrderCommand { get => _allDeleteOrderCommand ?? (_allDeleteOrderCommand = new RelayCommand(obj => AllDeleteOrders())); }
 
     }
 }
