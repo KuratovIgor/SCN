@@ -44,8 +44,8 @@ namespace SCN.Models
                 reader.Read();
                 SourceUri = Path.GetFullPath($"../../img/{reader.GetValue(0) as string}.jpg");
             }
-                            
-           _sqlConnection.Close();
+
+            _sqlConnection.Close();
         }
 
     }

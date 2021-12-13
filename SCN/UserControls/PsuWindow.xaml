@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SCN.UserControls"
+             xmlns:uc="clr-namespace:SCN.FilterUC"
              xmlns:components="clr-namespace:SCN.ComputerComponents"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -28,89 +29,7 @@
                   SelectedItem="{Binding SelectedComponent, Mode=TwoWay}"
                   ItemsSource="{Binding ComponentInfo.DefaultView, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Производитель"/>
-                <TextBox Grid.Row="1"
-                         Text="{Binding Maker, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                    <TextBox.InputBindings>
-                        <KeyBinding Key="Enter"
-                                    Command="{Binding FilterInfoCommand}"/>
-                    </TextBox.InputBindings>
-                </TextBox>
-            </Grid>
-
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Форм-фактор"/>
-                <TextBox Grid.Row="1"
-                         Text="{Binding FormFactor, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                    <TextBox.InputBindings>
-                        <KeyBinding Key="Enter"
-                                    Command="{Binding FilterInfoCommand}"/>
-                    </TextBox.InputBindings>
-                </TextBox>
-            </Grid>
-
-            <Grid Grid.Column="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Мощность"/>
-                <TextBox Grid.Row="1"
-                         Text="{Binding Power, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                    <TextBox.InputBindings>
-                        <KeyBinding Key="Enter"
-                                    Command="{Binding FilterInfoCommand}"/>
-                    </TextBox.InputBindings>
-                </TextBox>
-            </Grid>
-
-            <Grid Grid.Column="3">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Цена"/>
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" 
-                             Text="{Binding StartPrice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                        <TextBox.InputBindings>
-                            <KeyBinding Key="Enter"
-                                        Command="{Binding FilterInfoCommand}"/>
-                        </TextBox.InputBindings>
-                    </TextBox>
-                    <TextBlock Grid.Column="1" Text="-"/>
-                    <TextBox Grid.Column="2" 
-                             Text="{Binding LastPrice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                        <TextBox.InputBindings>
-                            <KeyBinding Key="Enter"
-                                        Command="{Binding FilterInfoCommand}"/>
-                        </TextBox.InputBindings>
-                    </TextBox>
-                </Grid>
-            </Grid>
-        </Grid>
+        <uc:FilterPsuUC Grid.Row="1"></uc:FilterPsuUC>
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -130,7 +49,6 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Visibility="{Binding Visible}" Template="{StaticResource btnTemplate}" Command="{Binding FilterInfoCommand}" Content="Фильтрация" Margin="20"/>
                 <Button Grid.Row="1" Visibility="{Binding Visible}" Template="{StaticResource btnTemplate}" Command="{Binding AddOrderCommand}" Content="В корзину" Margin="20"/>
 
                 <Button Grid.Row="1" Visibility="{Binding AdminVisible}" Template="{StaticResource btnTemplate}" Command="{Binding RemoveCommand}" Content="Снять товар с продажи" Margin="20"/>

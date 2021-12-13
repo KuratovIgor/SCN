@@ -85,6 +85,36 @@
     <Compile Include="ComputerComponents\SSD.cs" />
     <Compile Include="ComputerComponents\SystemBoard.cs" />
     <Compile Include="ComputerComponents\Videocard.cs" />
+    <Compile Include="ComponentConnector.cs" />
+    <Compile Include="FilterUC\FilterCpuUC.xaml.cs">
+      <DependentUpon>FilterCpuUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FilterUC\FilterHddUc.xaml.cs">
+      <DependentUpon>FilterHddUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FilterUC\FilterPsuUC.xaml.cs">
+      <DependentUpon>FilterPsuUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FilterUC\FilterRamUC.xaml.cs">
+      <DependentUpon>FilterRamUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FilterUC\FilterSsdUC.xaml.cs">
+      <DependentUpon>FilterSsdUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FilterUC\FilterSystemBoardUC.xaml.cs">
+      <DependentUpon>FilterSystemBoardUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FilterUC\FilterVideocardUC.xaml.cs">
+      <DependentUpon>FilterVideocardUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Filter\FilterCpu.cs" />
+    <Compile Include="Filter\FilterHardDrive.cs" />
+    <Compile Include="Filter\FilterPsu.cs" />
+    <Compile Include="Filter\FilterRam.cs" />
+    <Compile Include="Filter\FilterSsd.cs" />
+    <Compile Include="Filter\FilterSystemBoard.cs" />
+    <Compile Include="Filter\FilterVideocard.cs" />
+    <Compile Include="Filter\IFilterComponent.cs" />
     <Compile Include="Models\Assembly.cs" />
     <Compile Include="Models\Configurator.cs" />
     <Compile Include="Models\Order.cs" />
@@ -144,6 +174,34 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminVersion\Windows\MainAdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FilterUC\FilterCpuUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FilterUC\FilterHddUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FilterUC\FilterPsuUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FilterUC\FilterRamUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FilterUC\FilterSsdUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FilterUC\FilterSystemBoardUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FilterUC\FilterVideocardUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

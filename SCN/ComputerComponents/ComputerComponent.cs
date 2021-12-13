@@ -102,7 +102,7 @@ namespace SCN.ComputerComponents
             adapter.Fill(ComponentInfo);
         }
 
-        protected void FilterTheInfo(string command)
+        public void FilterInfoGlobal(string command)
         {
             SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
 
