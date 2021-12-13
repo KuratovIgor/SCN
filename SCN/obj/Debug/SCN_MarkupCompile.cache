@@ -16,5 +16,5 @@ C:\Users\KuratovIA\source\repos\SCN\SCN\App.xaml
 11-634722939
 AdminVersion\UserControls\AddCpuUC.xaml;AdminVersion\Windows\AddProductWindow.xaml;AdminVersion\Windows\MainAdminWindow.xaml;FilterUC\FilterCpuUC.xaml;FilterUC\FilterHddUc.xaml;FilterUC\FilterPsuUC.xaml;FilterUC\FilterRamUC.xaml;FilterUC\FilterSsdUC.xaml;FilterUC\FilterSystemBoardUC.xaml;FilterUC\FilterVideocardUC.xaml;MainWindow.xaml;UserControls\CpuWindow.xaml;UserControls\HardDriveWindow.xaml;UserControls\PsuWindow.xaml;UserControls\RamWindow.xaml;UserControls\SsdWindow.xaml;UserControls\SystemBoardWindow.xaml;UserControls\VideocardWindow.xaml;Windows\AuthorizationWindow.xaml;Windows\ChoosePcWindow.xaml;Windows\ComputerComponentsWindow.xaml;Windows\MainMenuWindow.xaml;Windows\OrdersWindow.xaml;Windows\RegisterWindow.xaml;XamlResources.xaml;
 
-True
+False
 

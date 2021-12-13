@@ -26,6 +26,7 @@ namespace SCN.ViewModels
         private string _orderCommand = "";
         private RelayCommand _deleteOrderCommand;
         private RelayCommand _allDeleteOrderCommand;
+        private RelayCommand _closeWindowCommand;
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order> { };
         public int SumPrice
         {
@@ -135,6 +136,12 @@ namespace SCN.ViewModels
             }
         }
 
+        public void CloseThisWindow()
+        {
+            Window window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+            window.Close();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")
@@ -144,6 +151,7 @@ namespace SCN.ViewModels
         }
         public RelayCommand DeleteOrderCommand { get => _deleteOrderCommand ?? (_deleteOrderCommand = new RelayCommand(obj => DeleteOrder())); }
         public RelayCommand AllDeleteOrderCommand { get => _allDeleteOrderCommand ?? (_allDeleteOrderCommand = new RelayCommand(obj => AllDeleteOrders())); }
+        public RelayCommand CloseWindowCommand { get => _closeWindowCommand ?? (_closeWindowCommand = new RelayCommand(obj => CloseThisWindow())); }
 
     }
 }
