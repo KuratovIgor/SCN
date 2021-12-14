@@ -70,6 +70,8 @@
     <Compile Include="AdminVersion\UserControls\AddCpuUC.xaml.cs">
       <DependentUpon>AddCpuUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminVersion\ViewModels\AddCpuVM.cs" />
+    <Compile Include="AdminVersion\ViewModels\BaseAddVM.cs" />
     <Compile Include="AdminVersion\ViewModels\MainAdminViewModel.cs" />
     <Compile Include="AdminVersion\Windows\AddProductWindow.xaml.cs">
       <DependentUpon>AddProductWindow.xaml</DependentUpon>

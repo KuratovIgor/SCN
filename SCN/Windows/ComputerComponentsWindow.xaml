@@ -88,6 +88,7 @@
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0" Content="В главное меню" Template="{StaticResource btnTemplate}" Command="{Binding ExitCommand}"/>
+            <Button Grid.Column="2" Visibility="{Binding Visible}" Content="Добавить товар" Template="{StaticResource btnTemplate}" Command="{Binding AddProductCommand}"/>
         </Grid>
     </Grid>
 </Window>

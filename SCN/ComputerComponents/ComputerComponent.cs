@@ -16,7 +16,6 @@ namespace SCN.ComputerComponents
 {
     public abstract class ComputerComponent : INotifyPropertyChanged
     {
-        private bool _isUser;
         private string _visible;
         private string _adminVisible;
 
@@ -33,16 +32,6 @@ namespace SCN.ComputerComponents
             {
                 _component = value;
                 OnPropertyChanged(nameof(ComponentInfo));
-            }
-        }
-
-        public bool IsUser
-        {
-            get => _isUser;
-            set
-            {
-                _isUser = value;
-                OnPropertyChanged(nameof(IsUser));
             }
         }
 
@@ -72,13 +61,11 @@ namespace SCN.ComputerComponents
 
             if (User.IsAdmin == 1)
             {
-                IsUser = false;
                 Visible = "Hidden";
                 AdminVisible = "Visible";
             }
             else
             {
-                IsUser = true;
                 Visible = "Visible";
                 AdminVisible = "Hidden";
             }

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SCN.AdminVersion.Windows"
+        xmlns:uc="clr-namespace:SCN.AdminVersion.UserControls"
         mc:Ignorable="d"
         Title="AddProductWindow" Height="450" Width="800">
     <Window.Resources>
@@ -19,6 +20,7 @@
         <TabControl Grid.Row="1" Margin="10">
             <TabItem Header="Процессоры" FontSize="15">
                 <Border BorderBrush="Black" BorderThickness="2" CornerRadius="2">
+                    <uc:AddCpuUC></uc:AddCpuUC>
                 </Border>
             </TabItem>
             <TabItem Header="Видеокарты" FontSize="15">

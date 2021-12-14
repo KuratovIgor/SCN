@@ -4,12 +4,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SCN.AdminVersion.UserControls"
+             xmlns:vm="clr-namespace:SCN.AdminVersion.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary Source="../../XamlResources.xaml"/>
     </UserControl.Resources>
+    <UserControl.DataContext>
+        <vm:AddCpuVM></vm:AddCpuVM>
+    </UserControl.DataContext>
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Выберите номер комплектующего, которое нужно добавить на склад"/>
+            <ComboBox Grid.Row="1" Margin="20" ItemsSource="{Binding NumberOfComponent, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></ComboBox>
+        </Grid>
+
+        <Button Grid.Row="1" Grid.Column="1" Content="На склад" Margin="0 100 0 0" Template="{StaticResource btnTemplate}"/>
     </Grid>
 </UserControl>
