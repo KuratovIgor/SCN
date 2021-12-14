@@ -1,0 +1,50 @@
+﻿<Window x:Class="SCN.AdminVersion.Windows.PayCpuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SCN.AdminVersion.Windows"
+        xmlns:vm="clr-namespace:SCN.AdminVersion.ViewModels"
+        mc:Ignorable="d"
+        Title="PayCpuWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary Source="../../XamlResources.xaml"></ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Производитель"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Модель"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Сокет"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Кол-во ядер"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Частота"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Тип памяти"/>
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Цена"/>
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Кол-во"/>
+
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Maker, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Model, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding Socket, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding Cores, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Text="{Binding Frequency, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Margin="5" Text="{Binding StorageType, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Margin="5" Text="{Binding Price, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBox Grid.Row="7" Grid.Column="1" Margin="5" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+        <Button Grid.Row="8" Grid.Column="1" Content="Закупить" Template="{StaticResource btnTemplate}" Command="{Binding PurchaseNewProductCommand}"/>
+    </Grid>
+</Window>

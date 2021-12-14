@@ -56,7 +56,7 @@ namespace SCN.ViewModels
         private void AddProduct()
         {
             Window w = new AddProductWindow();
-            w.ShowDialog();
+            w.Show();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

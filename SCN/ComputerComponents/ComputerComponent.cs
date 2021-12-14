@@ -76,7 +76,7 @@ namespace SCN.ComputerComponents
             SourceUri = Path.GetFullPath(path);
         }
 
-        protected void UpdateInfo(string nameComponent)
+        public void UpdateInfo(string nameComponent)
         {
             string executedCommand = $"select * from [{nameComponent}]";
 

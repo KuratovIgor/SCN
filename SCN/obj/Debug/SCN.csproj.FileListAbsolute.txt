@@ -125,3 +125,9 @@ C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\FilterUC\FilterRamUC.baml
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\FilterUC\FilterSsdUC.baml
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\FilterUC\FilterSystemBoardUC.baml
 C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\FilterUC\FilterVideocardUC.baml
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\AdminVersion\UserControls\AddHddUC.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\AdminVersion\Windows\PayCpuWindow.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\AdminVersion\UserControls\AddHddUC.baml
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\AdminVersion\Windows\PayCpuWindow.baml
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\AdminVersion\Windows\PayHddWindow.g.cs
+C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\AdminVersion\Windows\PayHddWindow.baml

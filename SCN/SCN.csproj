@@ -70,7 +70,11 @@
     <Compile Include="AdminVersion\UserControls\AddCpuUC.xaml.cs">
       <DependentUpon>AddCpuUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminVersion\UserControls\AddHddUC.xaml.cs">
+      <DependentUpon>AddHddUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminVersion\ViewModels\AddCpuVM.cs" />
+    <Compile Include="AdminVersion\ViewModels\AddHddVM.cs" />
     <Compile Include="AdminVersion\ViewModels\BaseAddVM.cs" />
     <Compile Include="AdminVersion\ViewModels\MainAdminViewModel.cs" />
     <Compile Include="AdminVersion\Windows\AddProductWindow.xaml.cs">
@@ -78,6 +82,12 @@
     </Compile>
     <Compile Include="AdminVersion\Windows\MainAdminWindow.xaml.cs">
       <DependentUpon>MainAdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVersion\Windows\PayCpuWindow.xaml.cs">
+      <DependentUpon>PayCpuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVersion\Windows\PayHddWindow.xaml.cs">
+      <DependentUpon>PayHddWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ComputerComponents\ComputerComponent.cs" />
     <Compile Include="ComputerComponents\CPU.cs" />
@@ -171,11 +181,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AdminVersion\UserControls\AddHddUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminVersion\Windows\AddProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminVersion\Windows\MainAdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminVersion\Windows\PayCpuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminVersion\Windows\PayHddWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

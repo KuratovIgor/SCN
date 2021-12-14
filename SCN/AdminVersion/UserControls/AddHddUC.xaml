@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SCN.AdminVersion.UserControls.AddCpuUC"
+﻿<UserControl x:Class="SCN.AdminVersion.UserControls.AddHddUC"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,7 +11,7 @@
         <ResourceDictionary Source="../../XamlResources.xaml"/>
     </UserControl.Resources>
     <UserControl.DataContext>
-        <vm:AddCpuVM></vm:AddCpuVM>
+        <vm:AddHddVM></vm:AddHddVM>
     </UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>

@@ -41,6 +41,7 @@
             </TabItem>
             <TabItem Header="Жесткие накопители" FontSize="15">
                 <Border BorderBrush="Black" BorderThickness="2" CornerRadius="2">
+                    <uc:AddHddUC></uc:AddHddUC>
                 </Border>
             </TabItem>
             <TabItem Header="SSD накопители" FontSize="15">

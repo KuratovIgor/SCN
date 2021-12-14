@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Markup;
 using SCN.AdminVersion.Windows;
 
 namespace SCN.AdminVersion.ViewModels
 {
-    public class AddCpuVM : BaseAddVM
+    public class AddHddVM : BaseAddVM
     {
         private string _maker;
         private string _model;
-        private string _socket;
-        private int _cores;
-        private int _freq;
-        private string _storageType;
+        private int _size;
+        private string _interface;
         private int _price;
         private int _count;
 
@@ -43,43 +39,23 @@ namespace SCN.AdminVersion.ViewModels
             }
         }
 
-        public string Socket
+        public int Size
         {
-            get => _socket;
+            get => _size;
             set
             {
-                _socket = value;
-                OnPropertyChanged(nameof(Socket));
+                _size = value;
+                OnPropertyChanged(nameof(Size));
             }
         }
 
-        public int Cores
+        public string Interface
         {
-            get => _cores;
+            get => _interface;
             set
             {
-                _cores = value;
-                OnPropertyChanged(nameof(Cores));
-            }
-        }
-
-        public int Frequency
-        {
-            get => _freq;
-            set
-            {
-                _freq = value;
-                OnPropertyChanged(nameof(Frequency));
-            }
-        }
-
-        public string StorageType
-        {
-            get => _storageType;
-            set
-            {
-                _storageType = value;
-                OnPropertyChanged(nameof(StorageType));
+                _interface = value;
+                OnPropertyChanged(nameof(Interface));
             }
         }
 
@@ -103,21 +79,21 @@ namespace SCN.AdminVersion.ViewModels
             }
         }
 
-        public AddCpuVM()
+        public AddHddVM()
         {
-            UpdateNumberCollection("Процессоры");
+            UpdateNumberCollection("Жесткие диски");
         }
 
         protected override void AddComponent()
         {
-            component = "Процессоры";
+            component = "Жесткие диски";
             base.AddComponent();
-            ComponentConnector.Cpu.UpdateInfo(component);
+            ComponentConnector.Hdd.UpdateInfo(component);
         }
 
         protected override void PurchaseProduct()
         {
-            Window w = new PayCpuWindow(this);
+            Window w = new PayHddWindow(this);
             w.ShowDialog();
         }
 
@@ -128,15 +104,15 @@ namespace SCN.AdminVersion.ViewModels
 
             try
             {
-                string command = $"insert into Процессоры values ('{Maker}', '{Model}', '{Socket}', {Cores}, {Frequency}, '{StorageType}', {Price}, {Count})";
+                string command = $"insert into [Жесткие диски] values ('{Maker}', '{Model}', {Size}, '{Interface}', {Price}, {Count})";
                 SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
                 sqlCommand.ExecuteNonQuery();
 
-                MessageBox.Show("Процессоры закуплены и добавлены на склад!");
+                MessageBox.Show("Жесткие диски закуплены и добавлены на склад!");
 
-                ComponentConnector.Cpu.UpdateInfo("Процессоры");
+                ComponentConnector.Hdd.UpdateInfo("Жесткие диски");
 
-                UpdateNumberCollection("Процессоры");
+                UpdateNumberCollection("Жесткие диски");
             }
             catch (Exception) { }
 
