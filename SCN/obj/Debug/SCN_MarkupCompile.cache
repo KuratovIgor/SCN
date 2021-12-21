@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\KuratovIA\source\repos\SCN\SCN\obj\Debug\
+C:\Users\Xab\source\repos\SCN\SCN\obj\Debug\
 SCN
 none
 false
 DEBUG;TRACE
-C:\Users\KuratovIA\source\repos\SCN\SCN\App.xaml
-25-960165028
+C:\Users\Xab\source\repos\SCN\SCN\App.xaml
+25209235105
 
-56-493869223
-11-634722939
+56-1204878548
+11-629299747
 AdminVersion\UserControls\AddCpuUC.xaml;AdminVersion\Windows\AddProductWindow.xaml;AdminVersion\Windows\MainAdminWindow.xaml;FilterUC\FilterCpuUC.xaml;FilterUC\FilterHddUc.xaml;FilterUC\FilterPsuUC.xaml;FilterUC\FilterRamUC.xaml;FilterUC\FilterSsdUC.xaml;FilterUC\FilterSystemBoardUC.xaml;FilterUC\FilterVideocardUC.xaml;MainWindow.xaml;UserControls\CpuWindow.xaml;UserControls\HardDriveWindow.xaml;UserControls\PsuWindow.xaml;UserControls\RamWindow.xaml;UserControls\SsdWindow.xaml;UserControls\SystemBoardWindow.xaml;UserControls\VideocardWindow.xaml;Windows\AuthorizationWindow.xaml;Windows\ChoosePcWindow.xaml;Windows\ComputerComponentsWindow.xaml;Windows\MainMenuWindow.xaml;Windows\OrdersWindow.xaml;Windows\RegisterWindow.xaml;XamlResources.xaml;
 
 False
