@@ -28,6 +28,7 @@ namespace SCN.ComputerComponents
         private RelayCommand _removeCommand;
         private RelayCommand _topUpCommand;
         private RelayCommand _purchaseCommand;
+        private RelayCommand _updateSystemBoardCommand;
 
         private string _removeSqlCommand = "";
         private string _orderCommand = "";
