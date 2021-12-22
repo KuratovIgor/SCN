@@ -23,12 +23,6 @@ namespace SCN.ViewModels
                    (_exitCommand = new RelayCommand(obj => Exit()));
         }
 
-        public RelayCommand AddProductCommand
-        {
-            get => _addProductCommand ??
-                   (_addProductCommand = new RelayCommand(obj => AddProduct()));
-        }
-
         public string Visible
         {
             get => _visible;
@@ -51,12 +45,6 @@ namespace SCN.ViewModels
         {
             Window window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
             window.Close();
-        }
-
-        private void AddProduct()
-        {
-            Window w = new AddProductWindow();
-            w.Show();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

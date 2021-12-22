@@ -6,15 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using SCN.AdminVersion.Windows;
 
 namespace SCN.AdminVersion.ViewModels
 {
-    public class AddHddVM : BaseAddVM
+    public class AddSsdVM : BaseAddVM
     {
         private string _maker;
         private string _model;
-        private int _size;
+        private int _storage;
         private string _interface;
         private int _price;
         private int _count;
@@ -39,13 +38,13 @@ namespace SCN.AdminVersion.ViewModels
             }
         }
 
-        public int Size
+        public int Storage
         {
-            get => _size;
+            get => _storage;
             set
             {
-                _size = value;
-                OnPropertyChanged(nameof(Size));
+                _storage = value;
+                OnPropertyChanged(nameof(Storage));
             }
         }
 
@@ -86,13 +85,13 @@ namespace SCN.AdminVersion.ViewModels
 
             try
             {
-                string command = $"insert into [Жесткие диски] values ('{Maker}', '{Model}', {Size}, '{Interface}', {Price}, {Count})";
+                string command = $"insert into [SSD Накопители] values ('{Maker}', '{Model}', {Storage}, '{Interface}', {Price}, {Count})";
                 SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
                 sqlCommand.ExecuteNonQuery();
 
-                MessageBox.Show("Жесткие диски закуплены и добавлены на склад!");
+                MessageBox.Show("SSD Накопители закуплены и добавлены на склад!");
 
-                ComponentConnector.Hdd.UpdateInfo("Жесткие диски");
+                ComponentConnector.Ssd.UpdateInfo("SSD Накопители");
             }
             catch (Exception) { }
 

@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SCN.AdminVersion.UserControls
+namespace SCN.AdminVersion.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AddCpuUC.xaml
+    /// Логика взаимодействия для PayPsuWindow.xaml
     /// </summary>
-    public partial class AddCpuUC : UserControl
+    public partial class PayPsuWindow : Window
     {
-        public AddCpuUC()
+        public PayPsuWindow()
         {
             InitializeComponent();
         }

@@ -6,18 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using SCN.AdminVersion.Windows;
 
 namespace SCN.AdminVersion.ViewModels
 {
-    public class AddHddVM : BaseAddVM
+    public class AddVideocardVM : BaseAddVM
     {
         private string _maker;
         private string _model;
-        private int _size;
+        private string _storageType;
+        private int _videoStorage;
         private string _interface;
-        private int _price;
         private int _count;
+        private int _price;
 
         public string Maker
         {
@@ -39,13 +39,23 @@ namespace SCN.AdminVersion.ViewModels
             }
         }
 
-        public int Size
+        public string StorageType
         {
-            get => _size;
+            get => _storageType;
             set
             {
-                _size = value;
-                OnPropertyChanged(nameof(Size));
+                _storageType = value;
+                OnPropertyChanged(nameof(StorageType));
+            }
+        }
+
+        public int VideoStorage
+        {
+            get => _videoStorage;
+            set
+            {
+                _videoStorage = value;
+                OnPropertyChanged(nameof(VideoStorage));
             }
         }
 
@@ -86,13 +96,13 @@ namespace SCN.AdminVersion.ViewModels
 
             try
             {
-                string command = $"insert into [Жесткие диски] values ('{Maker}', '{Model}', {Size}, '{Interface}', {Price}, {Count})";
+                string command = $"insert into Видеокарты values ('{Maker}', '{Model}', '{StorageType}', {VideoStorage}, '{Interface}', {Price}, {Count})";
                 SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
                 sqlCommand.ExecuteNonQuery();
 
-                MessageBox.Show("Жесткие диски закуплены и добавлены на склад!");
+                MessageBox.Show("Видеокарты закуплены и добавлены на склад!");
 
-                ComponentConnector.Hdd.UpdateInfo("Жесткие диски");
+                ComponentConnector.Videocard.UpdateInfo("Видеокарты");
             }
             catch (Exception) { }
 

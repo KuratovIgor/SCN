@@ -4,6 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using SCN.AdminVersion.Windows;
 using SCN.Filter;
 
 namespace SCN.ComputerComponents
@@ -12,6 +14,8 @@ namespace SCN.ComputerComponents
     {
         private RelayCommand _addOrderCommand;
         private RelayCommand _removeCommand;
+        private RelayCommand _topUpCommand;
+        private RelayCommand _purchaseCommand;
 
         private string _orderCommand = "";
         private string _removeSqlCommand = "";
@@ -50,13 +54,23 @@ namespace SCN.ComputerComponents
 
         private void Remove()
         {
-            string model = (SelectedComponent as DataRowView).Row.ItemArray[2].ToString();
-            _removeSqlCommand = $"delete from [Жесткие диски] where Модель = '{model}'";
-            RemoveProduct(_removeSqlCommand);
-            UpdateInfo("Жесткие диски");
+            RemoveProduct("Жесткие диски", SelectedComponent as DataRowView);
+        }
+
+        private void TopUp()
+        {
+            TopUpProduct("Жесткие диски", SelectedComponent as DataRowView);
+        }
+
+        private void OpenPurchaseWindow()
+        {
+            Window w = new PayHddWindow();
+            w.Show();
         }
 
         public RelayCommand AddOrderCommand { get => _addOrderCommand ?? (_addOrderCommand = new RelayCommand(obj => AddHardDrive())); }
         public RelayCommand RemoveCommand { get => _removeCommand ?? (_removeCommand = new RelayCommand(obj => Remove())); }
+        public RelayCommand TopUpCommand { get => _topUpCommand ?? (_topUpCommand = new RelayCommand(obj => TopUp())); }
+        public RelayCommand PurchaseCommand { get => _purchaseCommand ?? (_purchaseCommand = new RelayCommand(obj => OpenPurchaseWindow())); }
     }
 }

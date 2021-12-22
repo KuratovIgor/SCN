@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SCN.AdminVersion.ViewModels;
+using SCN.ComputerComponents;
 
 namespace SCN.AdminVersion.Windows
 {
@@ -20,10 +21,9 @@ namespace SCN.AdminVersion.Windows
     /// </summary>
     public partial class PayCpuWindow : Window
     {
-        public PayCpuWindow(AddCpuVM vm)
+        public PayCpuWindow()
         {
             InitializeComponent();
-            DataContext = vm;
         }
     }
 }

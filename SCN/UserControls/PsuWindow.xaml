@@ -48,10 +48,13 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Button Grid.Row="1" Visibility="{Binding Visible}" Template="{StaticResource btnTemplate}" Command="{Binding AddOrderCommand}" Content="В корзину" Margin="20"/>
 
-                <Button Grid.Row="1" Visibility="{Binding AdminVisible}" Template="{StaticResource btnTemplate}" Command="{Binding RemoveCommand}" Content="Снять товар с продажи" Margin="20"/>
+                <Button Grid.Row="0" Visibility="{Binding AdminVisible}" Template="{StaticResource btnTemplate}" Command="{Binding PurchaseCommand}" Content="Закупить новый товар" Margin="20"/>
+                <Button Grid.Row="1" Visibility="{Binding AdminVisible}" Template="{StaticResource btnTemplate}" Command="{Binding TopUpCommand}" Content="Пополнить" Margin="20"/>
+                <Button Grid.Row="2" Visibility="{Binding AdminVisible}" Template="{StaticResource btnTemplate}" Command="{Binding RemoveCommand}" Content="Снять товар с продажи" Margin="20"/>
             </Grid>
         </Grid>
     </Grid>

@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SCN.AdminVersion.UserControls
+namespace SCN.AdminVersion.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AddHddUC.xaml
+    /// Логика взаимодействия для PaySsdWindow.xaml
     /// </summary>
-    public partial class AddHddUC : UserControl
+    public partial class PaySsdWindow : Window
     {
-        public AddHddUC()
+        public PaySsdWindow()
         {
             InitializeComponent();
         }

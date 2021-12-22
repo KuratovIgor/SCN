@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace SCN.AdminVersion.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AddProductWindow.xaml
+    /// Логика взаимодействия для PayVideocardWindow.xaml
     /// </summary>
-    public partial class AddProductWindow : Window
+    public partial class PayVideocardWindow : Window
     {
-        public AddProductWindow()
+        public PayVideocardWindow()
         {
             InitializeComponent();
         }

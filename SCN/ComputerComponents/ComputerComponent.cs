@@ -104,10 +104,29 @@ namespace SCN.ComputerComponents
             sqlCommand.ExecuteNonQuery();
         }
 
-        protected void RemoveProduct(string command)
+        protected void RemoveProduct(string componentName, DataRowView selectedComponent)
         {
-            SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
-            sqlCommand.ExecuteNonQuery();
+            try
+            {
+                string model = selectedComponent.Row.ItemArray[2].ToString();
+                string command = $"delete from [{componentName}] where Модель = '{model}'";
+                SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
+                sqlCommand.ExecuteNonQuery();
+                UpdateInfo(componentName);
+            }
+            catch(Exception) { }
+        }
+
+        protected void TopUpProduct(string componentName, DataRowView selectedComponent)
+        {
+            try
+            {
+                string command = $"update [{componentName}] set [Кол-во] = [Кол-во] + 1 where Код = {Convert.ToInt32(selectedComponent.Row.ItemArray[0])}";
+                SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
+                sqlCommand.ExecuteNonQuery();
+                UpdateInfo(componentName);
+            }
+            catch(Exception) { }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

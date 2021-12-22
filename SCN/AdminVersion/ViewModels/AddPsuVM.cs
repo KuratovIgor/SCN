@@ -6,16 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using SCN.AdminVersion.Windows;
 
 namespace SCN.AdminVersion.ViewModels
 {
-    public class AddHddVM : BaseAddVM
+    public class AddPsuVM : BaseAddVM
     {
         private string _maker;
         private string _model;
-        private int _size;
-        private string _interface;
+        private string _formfactor;
+        private int _power;
         private int _price;
         private int _count;
 
@@ -39,23 +38,23 @@ namespace SCN.AdminVersion.ViewModels
             }
         }
 
-        public int Size
+        public string FormFactor
         {
-            get => _size;
+            get => _formfactor;
             set
             {
-                _size = value;
-                OnPropertyChanged(nameof(Size));
+                _formfactor = value;
+                OnPropertyChanged(nameof(FormFactor));
             }
         }
 
-        public string Interface
+        public int Power
         {
-            get => _interface;
+            get => _power;
             set
             {
-                _interface = value;
-                OnPropertyChanged(nameof(Interface));
+                _power = value;
+                OnPropertyChanged(nameof(_power));
             }
         }
 
@@ -86,13 +85,13 @@ namespace SCN.AdminVersion.ViewModels
 
             try
             {
-                string command = $"insert into [Жесткие диски] values ('{Maker}', '{Model}', {Size}, '{Interface}', {Price}, {Count})";
+                string command = $"insert into [Блоки питания] values ('{Maker}', '{Model}', '{FormFactor}', {Power}, {Price}, {Count})";
                 SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
                 sqlCommand.ExecuteNonQuery();
 
-                MessageBox.Show("Жесткие диски закуплены и добавлены на склад!");
+                MessageBox.Show("Блоки питания закуплены и добавлены на склад!");
 
-                ComponentConnector.Hdd.UpdateInfo("Жесткие диски");
+                ComponentConnector.Psu.UpdateInfo("Блоки питания");
             }
             catch (Exception) { }
 

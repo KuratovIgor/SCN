@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using SCN.AdminVersion.Windows;
+using System.Windows.Controls;
 
 namespace SCN.AdminVersion.ViewModels
 {
-    public class AddHddVM : BaseAddVM
+    public class AddRamVM : BaseAddVM
     {
         private string _maker;
         private string _model;
-        private int _size;
-        private string _interface;
+        private string _storageType;
+        private int _storage;
         private int _price;
         private int _count;
 
@@ -39,23 +40,23 @@ namespace SCN.AdminVersion.ViewModels
             }
         }
 
-        public int Size
+        public string StorageType
         {
-            get => _size;
+            get => _storageType;
             set
             {
-                _size = value;
-                OnPropertyChanged(nameof(Size));
+                _storageType = value;
+                OnPropertyChanged(nameof(StorageType));
             }
         }
 
-        public string Interface
+        public int Storage
         {
-            get => _interface;
+            get => _storage;
             set
             {
-                _interface = value;
-                OnPropertyChanged(nameof(Interface));
+                _storage = value;
+                OnPropertyChanged(nameof(Storage));
             }
         }
 
@@ -86,13 +87,13 @@ namespace SCN.AdminVersion.ViewModels
 
             try
             {
-                string command = $"insert into [Жесткие диски] values ('{Maker}', '{Model}', {Size}, '{Interface}', {Price}, {Count})";
+                string command = $"insert into [Оперативная память] values ('{Maker}', '{Model}', '{StorageType}', {Storage}, {Price}, {Count})";
                 SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
                 sqlCommand.ExecuteNonQuery();
 
-                MessageBox.Show("Жесткие диски закуплены и добавлены на склад!");
+                MessageBox.Show("Оперативная память закуплена и добавлена на склад!");
 
-                ComponentConnector.Hdd.UpdateInfo("Жесткие диски");
+                ComponentConnector.Ram.UpdateInfo("Оперативная память");
             }
             catch (Exception) { }
 

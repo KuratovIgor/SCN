@@ -11,6 +11,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Runtime.CompilerServices;
+using System.Windows;
+using SCN.AdminVersion.Windows;
 using SCN.Filter;
 
 namespace SCN.ComputerComponents
@@ -19,10 +21,11 @@ namespace SCN.ComputerComponents
     {
         private RelayCommand _addOrderCommand;
         private RelayCommand _removeCommand;
+        private RelayCommand _topUpCommand;
+        private RelayCommand _purchaseCommand;
+
         private string _removeSqlCommand = "";
-
         private string _orderCommand = "";
-
         private object _selectedComponent;
         
 
@@ -58,13 +61,23 @@ namespace SCN.ComputerComponents
 
         private void Remove()
         {
-            string model = (SelectedComponent as DataRowView).Row.ItemArray[2].ToString();
-            _removeSqlCommand = $"delete from Видеокарты where Модель = '{model}'";
-            RemoveProduct(_removeSqlCommand);
-            UpdateInfo("Видеокарты");
+            RemoveProduct("Видеокарты", SelectedComponent as DataRowView);
+        }
+
+        private void TopUp()
+        {
+            TopUpProduct("Видеокарты", SelectedComponent as DataRowView);
+        }
+
+        private void OpenPurchaseWindow()
+        {
+            Window w = new PayVideocardWindow();
+            w.Show();
         }
 
         public RelayCommand AddOrderCommand { get => _addOrderCommand ?? (_addOrderCommand = new RelayCommand(obj => AddVideocard())); }
         public RelayCommand RemoveCommand { get => _removeCommand ?? (_removeCommand = new RelayCommand(obj => Remove())); }
+        public RelayCommand TopUpCommand { get => _topUpCommand ?? (_topUpCommand = new RelayCommand(obj => TopUp())); }
+        public RelayCommand PurchaseCommand { get => _purchaseCommand ?? (_purchaseCommand = new RelayCommand(obj => OpenPurchaseWindow())); }
     }
 }

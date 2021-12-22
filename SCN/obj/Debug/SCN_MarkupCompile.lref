@@ -1,8 +1,15 @@
 ﻿
 
-FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\UserControls\AddCpuUC.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\Windows\AddProductWindow.xaml;;
 FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\Windows\MainAdminWindow.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\Windows\PayCpuWindow.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\Windows\PayHddWindow.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterCpuUC.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterHddUc.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterPsuUC.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterRamUC.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterSsdUC.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterSystemBoardUC.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterVideocardUC.xaml;;
 FC:\Users\KuratovIA\source\repos\SCN\SCN\MainWindow.xaml;;
 FC:\Users\KuratovIA\source\repos\SCN\SCN\UserControls\CpuWindow.xaml;;
 FC:\Users\KuratovIA\source\repos\SCN\SCN\UserControls\HardDriveWindow.xaml;;
@@ -11,20 +18,15 @@ FC:\Users\KuratovIA\source\repos\SCN\SCN\UserControls\RamWindow.xaml;;
 FC:\Users\KuratovIA\source\repos\SCN\SCN\UserControls\SsdWindow.xaml;;
 FC:\Users\KuratovIA\source\repos\SCN\SCN\UserControls\SystemBoardWindow.xaml;;
 FC:\Users\KuratovIA\source\repos\SCN\SCN\UserControls\VideocardWindow.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\Windows\AuthorizationWindow.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\Register\AuthorizationWindow.xaml;;
 FC:\Users\KuratovIA\source\repos\SCN\SCN\Windows\ChoosePcWindow.xaml;;
 FC:\Users\KuratovIA\source\repos\SCN\SCN\Windows\ComputerComponentsWindow.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\Windows\MainMenuWindow.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\MainMenu\MainMenuWindow.xaml;;
 FC:\Users\KuratovIA\source\repos\SCN\SCN\Windows\OrdersWindow.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\Windows\RegisterWindow.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterCpuUC.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterHddUc.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterPsuUC.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterRamUC.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterSsdUC.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterSystemBoardUC.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\FilterUC\FilterVideocardUC.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\UserControls\AddHddUC.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\Windows\PayCpuWindow.xaml;;
-FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\Windows\PayHddWindow.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\Register\RegisterWindow.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\Windows\PayPsuWindow.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\Windows\PayRamWindow.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\Windows\PaySsdWindow.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\Windows\PaySystemBoardWindow.xaml;;
+FC:\Users\KuratovIA\source\repos\SCN\SCN\AdminVersion\Windows\PayVideocardWindow.xaml;;
 

@@ -11,16 +11,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using SCN.AdminVersion.ViewModels;
 
 namespace SCN.AdminVersion.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для PayHddWindow.xaml
+    /// Логика взаимодействия для PayRamWindow.xaml
     /// </summary>
-    public partial class PayHddWindow : Window
+    public partial class PayRamWindow : Window
     {
-        public PayHddWindow()
+        public PayRamWindow()
         {
             InitializeComponent();
         }

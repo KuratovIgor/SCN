@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Markup;
-using SCN.AdminVersion.Windows;
+using System.Windows.Documents.DocumentStructures;
 
 namespace SCN.AdminVersion.ViewModels
 {
-    public class AddCpuVM : BaseAddVM
+    public class AddSystemBoardVM : BaseAddVM
     {
         private string _maker;
         private string _model;
+        private string _formFactor;
         private string _socket;
-        private int _cores;
-        private int _freq;
+        private string _chipset;
         private string _storageType;
-        private int _price;
+        private int _countSata;
         private int _count;
+        private int _price;
 
         public string Maker
         {
@@ -43,6 +43,16 @@ namespace SCN.AdminVersion.ViewModels
             }
         }
 
+        public string FormFactor
+        {
+            get => _formFactor;
+            set
+            {
+                _formFactor = value;
+                OnPropertyChanged(nameof(FormFactor));
+            }
+        }
+
         public string Socket
         {
             get => _socket;
@@ -53,23 +63,13 @@ namespace SCN.AdminVersion.ViewModels
             }
         }
 
-        public int Cores
+        public string Chipset
         {
-            get => _cores;
+            get => _chipset;
             set
             {
-                _cores = value;
-                OnPropertyChanged(nameof(Cores));
-            }
-        }
-
-        public int Frequency
-        {
-            get => _freq;
-            set
-            {
-                _freq = value;
-                OnPropertyChanged(nameof(Frequency));
+                _chipset = value;
+                OnPropertyChanged(nameof(Chipset));
             }
         }
 
@@ -83,13 +83,13 @@ namespace SCN.AdminVersion.ViewModels
             }
         }
 
-        public int Price
+        public int CountSata
         {
-            get => _price;
+            get => _countSata;
             set
             {
-                _price = value;
-                OnPropertyChanged(nameof(Price));
+                _countSata = value;
+                OnPropertyChanged(nameof(CountSata));
             }
         }
 
@@ -103,6 +103,16 @@ namespace SCN.AdminVersion.ViewModels
             }
         }
 
+        public int Price
+        {
+            get => _price;
+            set
+            {
+                _price = value;
+                OnPropertyChanged(nameof(Price));
+            }
+        }
+
         protected override void PurchaseProduct()
         {
             if (sqlConnection.State != ConnectionState.Open)
@@ -110,13 +120,13 @@ namespace SCN.AdminVersion.ViewModels
 
             try
             {
-                string command = $"insert into Процессоры values ('{Maker}', '{Model}', '{Socket}', {Cores}, {Frequency}, '{StorageType}', {Price}, {Count})";
+                string command = $"insert into [Материнские платы] values ('{Maker}', '{Model}', '{FormFactor}', '{Socket}', '{Chipset}', '{StorageType}', {CountSata}, {Count}, {Price})";
                 SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
                 sqlCommand.ExecuteNonQuery();
 
-                MessageBox.Show("Процессоры закуплены и добавлены на склад!");
+                MessageBox.Show("Материнские платы закуплены и добавлены на склад!");
 
-                ComponentConnector.Cpu.UpdateInfo("Процессоры");
+                ComponentConnector.SystemBoard.UpdateInfo("Материнские платы");
             }
             catch (Exception) { }
 

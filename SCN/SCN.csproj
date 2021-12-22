@@ -67,19 +67,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AdminVersion\UserControls\AddCpuUC.xaml.cs">
-      <DependentUpon>AddCpuUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AdminVersion\UserControls\AddHddUC.xaml.cs">
-      <DependentUpon>AddHddUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AdminVersion\ViewModels\AddCpuVM.cs" />
     <Compile Include="AdminVersion\ViewModels\AddHddVM.cs" />
+    <Compile Include="AdminVersion\ViewModels\AddPsuVM.cs" />
+    <Compile Include="AdminVersion\ViewModels\AddRamVM.cs" />
+    <Compile Include="AdminVersion\ViewModels\AddSsdVM.cs" />
+    <Compile Include="AdminVersion\ViewModels\AddSystemBoardVM.cs" />
+    <Compile Include="AdminVersion\ViewModels\AddVideocardVM.cs" />
     <Compile Include="AdminVersion\ViewModels\BaseAddVM.cs" />
     <Compile Include="AdminVersion\ViewModels\MainAdminViewModel.cs" />
-    <Compile Include="AdminVersion\Windows\AddProductWindow.xaml.cs">
-      <DependentUpon>AddProductWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AdminVersion\Windows\MainAdminWindow.xaml.cs">
       <DependentUpon>MainAdminWindow.xaml</DependentUpon>
     </Compile>
@@ -88,6 +84,21 @@
     </Compile>
     <Compile Include="AdminVersion\Windows\PayHddWindow.xaml.cs">
       <DependentUpon>PayHddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVersion\Windows\PayPsuWindow.xaml.cs">
+      <DependentUpon>PayPsuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVersion\Windows\PayRamWindow.xaml.cs">
+      <DependentUpon>PayRamWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVersion\Windows\PaySsdWindow.xaml.cs">
+      <DependentUpon>PaySsdWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVersion\Windows\PaySystemBoardWindow.xaml.cs">
+      <DependentUpon>PaySystemBoardWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVersion\Windows\PayVideocardWindow.xaml.cs">
+      <DependentUpon>PayVideocardWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ComputerComponents\ComputerComponent.cs" />
     <Compile Include="ComputerComponents\CPU.cs" />
@@ -119,14 +130,14 @@
     <Compile Include="FilterUC\FilterVideocardUC.xaml.cs">
       <DependentUpon>FilterVideocardUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Filter\FilterCpu.cs" />
-    <Compile Include="Filter\FilterHardDrive.cs" />
-    <Compile Include="Filter\FilterPsu.cs" />
-    <Compile Include="Filter\FilterRam.cs" />
-    <Compile Include="Filter\FilterSsd.cs" />
-    <Compile Include="Filter\FilterSystemBoard.cs" />
-    <Compile Include="Filter\FilterVideocard.cs" />
-    <Compile Include="Filter\IFilterComponent.cs" />
+    <Compile Include="FilterVM\FilterCpu.cs" />
+    <Compile Include="FilterVM\FilterHardDrive.cs" />
+    <Compile Include="FilterVM\FilterPsu.cs" />
+    <Compile Include="FilterVM\FilterRam.cs" />
+    <Compile Include="FilterVM\FilterSsd.cs" />
+    <Compile Include="FilterVM\FilterSystemBoard.cs" />
+    <Compile Include="FilterVM\FilterVideocard.cs" />
+    <Compile Include="FilterVM\IFilterComponent.cs" />
     <Compile Include="Models\Assembly.cs" />
     <Compile Include="Models\Configurator.cs" />
     <Compile Include="Models\Order.cs" />
@@ -153,13 +164,13 @@
     <Compile Include="UserControls\VideocardWindow.xaml.cs">
       <DependentUpon>VideocardWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\AuthorizationViewModel.cs" />
+    <Compile Include="Register\AuthorizationViewModel.cs" />
     <Compile Include="ViewModels\ComputerComponentsViewModel.cs" />
     <Compile Include="ViewModels\ConfiguratorViewModel.cs" />
-    <Compile Include="ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="MainMenu\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\OrdersViewModel.cs" />
-    <Compile Include="ViewModels\RegisterViewModel.cs" />
-    <Compile Include="Windows\AuthorizationWindow.xaml.cs">
+    <Compile Include="Register\RegisterViewModel.cs" />
+    <Compile Include="Register\AuthorizationWindow.xaml.cs">
       <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ChoosePcWindow.xaml.cs">
@@ -168,27 +179,15 @@
     <Compile Include="Windows\ComputerComponentsWindow.xaml.cs">
       <DependentUpon>ComputerComponentsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MainMenuWindow.xaml.cs">
+    <Compile Include="MainMenu\MainMenuWindow.xaml.cs">
       <DependentUpon>MainMenuWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\OrdersWindow.xaml.cs">
       <DependentUpon>OrdersWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\RegisterWindow.xaml.cs">
+    <Compile Include="Register\RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="AdminVersion\UserControls\AddCpuUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AdminVersion\UserControls\AddHddUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AdminVersion\Windows\AddProductWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="AdminVersion\Windows\MainAdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +197,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminVersion\Windows\PayHddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminVersion\Windows\PayPsuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminVersion\Windows\PayRamWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminVersion\Windows\PaySsdWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminVersion\Windows\PaySystemBoardWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminVersion\Windows\PayVideocardWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -269,7 +288,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\AuthorizationWindow.xaml" />
+    <Page Include="Register\AuthorizationWindow.xaml" />
     <Page Include="Windows\ChoosePcWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -278,12 +297,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\MainMenuWindow.xaml" />
+    <Page Include="MainMenu\MainMenuWindow.xaml" />
     <Page Include="Windows\OrdersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\RegisterWindow.xaml">
+    <Page Include="Register\RegisterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
