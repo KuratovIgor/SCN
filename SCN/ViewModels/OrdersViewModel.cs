@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -21,13 +22,14 @@ namespace SCN.ViewModels
 
         protected string _executedCommand;
         private int _sumPrice;
-        private int _countOrders;
+        private int _sumCount;
         private Order _selectedComponent;
         private string _orderCommand = "";
         private RelayCommand _deleteOrderCommand;
         private RelayCommand _allDeleteOrderCommand;
         private RelayCommand _closeWindowCommand;
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order> { };
+        public string SourceBack { get; set; }
         public int SumPrice
         {
             get => _sumPrice;
@@ -40,10 +42,10 @@ namespace SCN.ViewModels
 
         public int CountOrders
         {
-            get => Orders.Count;
+            get => _sumCount;
             set
             {
-                _countOrders = value;
+                _sumCount = value;
                 OnPropertyChanged(nameof(CountOrders));
             }
         }
@@ -54,22 +56,27 @@ namespace SCN.ViewModels
             set
             {
                 _selectedComponent = value;
-                //OnPropertyChanged(nameof(SelectedComponent));
             }
         }
 
         public OrdersViewModel()
         {
             UpdateOrders();
+            SetImage("../../img/basket.png");
         }
-     
+
+        public void SetImage(string path)
+        {
+            SourceBack = Path.GetFullPath(path);
+        }
+
         public void UpdateOrders()
         {
             Orders.Clear();
 
             _sqlConnection.Open();
 
-            _executedCommand = $"select Номер, Модель, Цена, [Тип комплектующего] from Заказы where [Номер клиента] = 'kuratov'";
+            _executedCommand = $"select Номер, Модель, Цена, [Тип комплектующего], [Кол-во] from Заказы where [Номер клиента] = 'kuratov'";
 
             SqlCommand sqlCommand = new SqlCommand(_executedCommand, _sqlConnection);
 
@@ -81,11 +88,13 @@ namespace SCN.ViewModels
                     string name = reader.GetValue(1) as string;
                     int price = Convert.ToInt32(reader.GetValue(2));
                     int typeComponent = Convert.ToInt32(reader.GetValue(3));
-                    Orders.Add(new Order(name, price, typeComponent, id));
+                    int count = Convert.ToInt32(reader.GetValue(4));
+                    Orders.Add(new Order(name, price, typeComponent, id, count));
+                    _sumCount += count;
                 }
             }
             CalculateSumPrice();
-            CountOrders = Orders.Count;
+            CountOrders = _sumCount;
             _sqlConnection.Close();
 
         }
@@ -100,8 +109,12 @@ namespace SCN.ViewModels
                 _orderCommand = $"delete from Заказы where [Номер клиента] = 'kuratov' and Номер = {id} ";
 
                 SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
-                sqlCommand.ExecuteNonQuery();
-
+                sqlCommand.ExecuteNonQuery(); 
+                
+                foreach(var order in Orders)
+                {
+                    _sumCount -= order.CountOrder;
+                }         
                 _sqlConnection.Close();
 
                 UpdateOrders();
@@ -121,6 +134,7 @@ namespace SCN.ViewModels
 
             SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
             sqlCommand.ExecuteNonQuery();
+            _sumCount = 0;
 
             _sqlConnection.Close();
 

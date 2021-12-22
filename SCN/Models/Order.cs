@@ -20,15 +20,17 @@ namespace SCN.Models
         public string Name { get; set; }
         public int Price { get; set; }
         public string SourceUri { get; set; }
+        public int CountOrder { get; set; }
 
         private int _typeComponent;
 
-        public Order(string name, int price, int typeComponent, int id)
+        public Order(string name, int price, int typeComponent, int id, int count)
         {
             Name = name;
             Price = price;
             _typeComponent = typeComponent;
             Id = id;
+            CountOrder = count;
             LoadImage();
         }
 

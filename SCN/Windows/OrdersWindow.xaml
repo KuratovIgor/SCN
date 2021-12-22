@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SCN.Windows"
         xmlns:vm="clr-namespace:SCN.ViewModels"
         mc:Ignorable="d"
-        Title="Заказы" MaxHeight="700" MaxWidth="1200" MinHeight="700" MinWidth="1200">
+        Title="Корзина" MaxHeight="700" MaxWidth="1200" MinHeight="700" MinWidth="1200">
     
     <Window.DataContext>
         <vm:OrdersViewModel/>
@@ -15,7 +15,7 @@
     <Window.Resources>
         <ResourceDictionary Source="../XamlResources.xaml"></ResourceDictionary>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -34,40 +34,49 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
-                        <Image Grid.Column="0" Source="{Binding SourceUri}"></Image>
-                        <StackPanel Grid.Column="1">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Модель: " FontSize="20" FontFamily ="Futura PT"></TextBlock>
-                                <TextBlock Text="{Binding Name}" FontSize="20"></TextBlock>
+                            <Image Grid.Column="0" Source="{Binding SourceUri}"></Image>
+                            <StackPanel Grid.Column="1">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Модель: " FontSize="20" FontFamily ="Futura PT"></TextBlock>
+                                    <TextBlock Text="{Binding Name}" FontSize="20"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Цена: " FontSize="20" FontFamily ="Futura PT"></TextBlock>
+                                    <TextBlock Text="{Binding Price}" FontSize="20"></TextBlock>
+                                    <TextBlock Text=" руб" FontSize="25" FontFamily ="Futura PT"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Кол-во " FontSize="20" FontFamily ="Futura PT"></TextBlock>
+                                    <TextBlock Text="{Binding CountOrder}" FontSize="20"></TextBlock>
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Цена: " FontSize="20" FontFamily ="Futura PT"></TextBlock>
-                                <TextBlock Text="{Binding Price}" FontSize="20"></TextBlock>
-                                <TextBlock Text=" руб" FontSize="25" FontFamily ="Futura PT"></TextBlock>
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
+                        </Grid>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        
+
         <StackPanel Grid.Column="1" Orientation="Vertical">
             <StackPanel Orientation="Horizontal" >
                 <TextBlock Text="Сумма заказа " FontSize="25" FontFamily ="Futura PT"></TextBlock>
                 <TextBlock Text="{Binding SumPrice, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"  FontSize="25" FontFamily ="Futura PT"></TextBlock>
                 <TextBlock Text=" руб" FontSize="25" FontFamily ="Futura PT"></TextBlock>
             </StackPanel>
- 
+
             <StackPanel Orientation="Horizontal" >
                 <TextBlock Text="Кол-во товаров " FontSize="25" FontFamily ="Futura PT"></TextBlock>
                 <TextBlock Text="{Binding CountOrders, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" FontSize="25" FontFamily ="Futura PT"></TextBlock>
             </StackPanel>
             <Button Content ="Удалить"  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding DeleteOrderCommand}" ></Button>
             <Button Content ="Удалить все "  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding AllDeleteOrderCommand }" ></Button>
-            <Button Content ="Назад "  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding CloseWindowCommand }" ></Button>
-            <Image Grid.Column="1" Height="300" Source="C:\Users\KuratovIA\source\repos\SCN\SCN\img\basket.png"  ></Image>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="470"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="{Binding SourceBack}"  ></Image>
+                <Button Grid.Row="1" Content ="Назад "  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding CloseWindowCommand }" ></Button>
+            </Grid>
         </StackPanel>
     </Grid>
-    
 </Window>

@@ -99,6 +99,12 @@ namespace SCN.ComputerComponents
         }
 
         protected void AddOrder(string command)
+        {          
+            SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
+            sqlCommand.ExecuteNonQuery();                           
+        }
+
+        protected void UpdateComponents(string command)
         {
             SqlCommand sqlCommand = new SqlCommand(command, _sqlConnection);
             sqlCommand.ExecuteNonQuery();
