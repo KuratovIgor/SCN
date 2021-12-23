@@ -67,11 +67,12 @@
                 <TextBlock Text="Кол-во товаров " FontSize="25" FontFamily ="Futura PT"></TextBlock>
                 <TextBlock Text="{Binding CountOrders, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" FontSize="25" FontFamily ="Futura PT"></TextBlock>
             </StackPanel>
-            <Button Content ="Удалить"  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding DeleteOrderCommand}" ></Button>
-            <Button Content ="Удалить все "  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding AllDeleteOrderCommand }" ></Button>
+            <Button Content ="Удалить товар"  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding DeleteOrderCommand}" ></Button>
+            <Button Content ="Очистить корзину "  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding AllDeleteOrderCommand }" ></Button>
+            <Button Content ="Оформить заказ "  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding  }" ></Button>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="470"/>
+                    <RowDefinition Height="430"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
                 <Image Grid.Row="0" Source="{Binding SourceBack}"  ></Image>

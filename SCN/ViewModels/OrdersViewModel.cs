@@ -98,26 +98,45 @@ namespace SCN.ViewModels
             _sqlConnection.Close();
 
         }
+        private void UpdateComponents()
+        {
+            int count = SelectedComponent.CountOrder;
+            int type = SelectedComponent._typeComponent;
+            string model = SelectedComponent.Name;
+            model = model.Substring(model.IndexOf(" ") + 1);
 
+            if (type == 1) { _orderCommand = $"update from [Жесткие диски] set [Кол-во] = [Кол-во] + {count} where Модель = {model} "; }
+            if (type == 2) { _orderCommand = $"update from Процессоры set [Кол-во] = [Кол-во] + {count} where Модель = {model} "; }
+            if (type == 3) { _orderCommand = $"update from [Блоки питания] set [Кол-во] = [Кол-во] + {count} where Модель = {model} "; }
+            if (type == 4) { _orderCommand = $"update from Видеокарты where set [Кол-во] = [Кол-во] + {count} where Модель = {model} "; }
+            if (type == 5) { _orderCommand = $"update from [Оперативная память] set [Кол-во] = [Кол-во] + {count} where Модель = {model} "; }
+            if (type == 6) { _orderCommand = $"update from [Материнские платы] set [Кол-во] = [Кол-во] + {count} where Модель = {model} "; }
+            if (type == 7) { _orderCommand = $"update from [SSD накопители] set [Кол-во] = [Кол-во] + {count} where Модель = {model} "; }
+
+            SqlCommand sqlCommand2 = new SqlCommand(_orderCommand, _sqlConnection);
+            sqlCommand2.ExecuteNonQuery();
+        }
         public void DeleteOrder()
         {
             try
             {
                 _sqlConnection.Open();
                 int id = SelectedComponent.Id;
-
                 _orderCommand = $"delete from Заказы where [Номер клиента] = 'kuratov' and Номер = {id} ";
 
                 SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
-                sqlCommand.ExecuteNonQuery(); 
-                
-                foreach(var order in Orders)
+                sqlCommand.ExecuteNonQuery();
+
+                UpdateComponents();
+
+                foreach (var order in Orders)
                 {
                     _sumCount -= order.CountOrder;
                 }         
                 _sqlConnection.Close();
 
                 UpdateOrders();
+                
             }
             catch (Exception)
             {

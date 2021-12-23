@@ -21,8 +21,7 @@ namespace SCN.Models
         public int Price { get; set; }
         public string SourceUri { get; set; }
         public int CountOrder { get; set; }
-
-        private int _typeComponent;
+        public int _typeComponent { get; set; }
 
         public Order(string name, int price, int typeComponent, int id, int count)
         {
