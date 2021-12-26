@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SCN.Models
 {
@@ -16,13 +17,14 @@ namespace SCN.Models
 
         protected string _executedCommand;
 
+        private RelayCommand _addCountOrderCommand;
+
         public int Id { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
         public string SourceUri { get; set; }
         public int CountOrder { get; set; }
-
-        private int _typeComponent;
+        public int _typeComponent { get; set; }
 
         public Order(string name, int price, int typeComponent, int id, int count)
         {
@@ -49,6 +51,5 @@ namespace SCN.Models
 
             _sqlConnection.Close();
         }
-
     }
 }
