@@ -21,13 +21,18 @@ namespace SCN.ViewModels
             new SqlConnection(ConfigurationManager.ConnectionStrings["SCNDB"].ConnectionString);
 
         protected string _executedCommand;
-        private int _sumPrice;
-        private int _sumCount;
-        private Order _selectedComponent;
+
         private string _orderCommand = "";
+        private int _sumPrice;
+        private int _sumCount;      
+       
+        private Order _selectedComponent;
         private RelayCommand _deleteOrderCommand;
         private RelayCommand _allDeleteOrderCommand;
         private RelayCommand _closeWindowCommand;
+        private RelayCommand _addCountOrderCommand;
+        private RelayCommand _placeOrderCommand;
+        private RelayCommand _substructCountOrderCommand;
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order> { };
         public string SourceBack { get; set; }
         public int SumPrice
@@ -39,7 +44,6 @@ namespace SCN.ViewModels
                 OnPropertyChanged(nameof(SumPrice));
             }
         }
-
         public int CountOrders
         {
             get => _sumCount;
@@ -49,7 +53,6 @@ namespace SCN.ViewModels
                 OnPropertyChanged(nameof(CountOrders));
             }
         }
-
         public Order SelectedComponent
         {
             get => _selectedComponent;
@@ -99,25 +102,108 @@ namespace SCN.ViewModels
 
         }
 
+        private bool IsСomponentNotExist(string model)
+        {
+            _executedCommand = $"select [Кол-во], Модель from (select [Кол-во], Модель from Процессоры" +
+                $" union select [Кол-во], Модель from Видеокарты" +
+                $" union select [Кол-во], Модель from[Оперативная память] " +
+                $"union select [Кол-во], Модель from[Жесткие диски] " +
+                $"union select [Кол-во], Модель from[Материнские платы] " +
+                $"union select [Кол-во], Модель from[SSD Накопители] " +
+                $"union select [Кол-во], Модель from[Блоки питания]) as Comp where Модель = '{model}'";
+
+            SqlCommand sqlCommand = new SqlCommand(_executedCommand, _sqlConnection);
+
+            using (SqlDataReader reader = sqlCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int count = Convert.ToInt32(reader.GetValue(0));
+                    if (count <= 0)
+                        return true;
+                }
+            }
+            return false;
+        }
+        private void ReturnComponentsFromBasket()
+        {
+            _executedCommand = $"select [Кол-во], [Тип комплектующего], Модель from Заказы where [Номер клиента] = '{User.Login}'";
+
+            SqlCommand sqlCommand3 = new SqlCommand(_executedCommand, _sqlConnection);
+
+            using (SqlDataReader reader = sqlCommand3.ExecuteReader())
+            {
+                _orderCommand = "";
+                while (reader.Read())
+                {               
+                    int count = Convert.ToInt32(reader.GetValue(0));
+                    int type = Convert.ToInt32(reader.GetValue(1));
+                    string model = reader.GetValue(2) as string;
+                    string nameTable = "";
+                    model = model.Substring(model.IndexOf(" ") + 1);
+
+                    if (type == 1) { nameTable = "[Жесткие диски]"; }
+                    if (type == 2) { nameTable = "Процессоры"; }
+                    if (type == 3) { nameTable = "[Блоки питания]"; }
+                    if (type == 4) { nameTable = "Видеокарты"; }
+                    if (type == 5) { nameTable = "[Оперативная память]"; }
+                    if (type == 6) { nameTable = "[Материнские платы]"; }
+                    if (type == 7) { nameTable = "[SSD накопители]"; }
+
+                    _orderCommand += $"update {nameTable} set [Кол-во] = [Кол-во] + {count} where Модель = '{model}'; ";
+                }
+            }
+            SqlCommand sqlCommand2 = new SqlCommand(_orderCommand, _sqlConnection);
+            sqlCommand2.ExecuteNonQuery();
+        }
+        private void ReturnComponentFromBasket(char znak, int count)
+        {
+            
+            int type = SelectedComponent._typeComponent;
+            string model = SelectedComponent.Name;
+            string nameTable = "";
+            model = model.Substring(model.IndexOf(" ") + 1);
+            
+
+            if (type == 1) { nameTable = "[Жесткие диски]"; }
+            if (type == 2) { nameTable = "Процессоры"; }
+            if (type == 3) { nameTable = "[Блоки питания]"; }
+            if (type == 4) { nameTable = "Видеокарты"; }
+            if (type == 5) { nameTable = "[Оперативная память]"; }
+            if (type == 6) { nameTable = "[Материнские платы]"; }
+            if (type == 7) { nameTable = "[SSD накопители]"; }
+
+            _orderCommand = $"update {nameTable} set [Кол-во] = [Кол-во] {znak} {count} where Модель = '{model}' ";
+            SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+        }
+
         public void DeleteOrder()
         {
             try
             {
-                _sqlConnection.Open();
+                if (_sqlConnection.State != ConnectionState.Open)
+                    _sqlConnection.Open();
+          
                 int id = SelectedComponent.Id;
 
                 _orderCommand = $"delete from Заказы where [Номер клиента] = '{User.Login}' and Номер = {id} ";
+                int count = SelectedComponent.CountOrder;
+                _orderCommand = $"delete from Заказы where [Номер клиента] = '{User.Login}' and Номер = {id} ";
 
                 SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
-                sqlCommand.ExecuteNonQuery(); 
-                
-                foreach(var order in Orders)
+                sqlCommand.ExecuteNonQuery();
+
+                ReturnComponentFromBasket('+', count);
+
+                foreach (var order in Orders)
                 {
                     _sumCount -= order.CountOrder;
                 }         
                 _sqlConnection.Close();
 
                 UpdateOrders();
+                
             }
             catch (Exception)
             {
@@ -128,7 +214,30 @@ namespace SCN.ViewModels
 
         public void AllDeleteOrders()
         {
-            _sqlConnection.Open();
+            try
+            {
+                _sqlConnection.Open();
+                ReturnComponentsFromBasket();
+                _orderCommand = $"delete from Заказы where [Номер клиента] = '{User.Login}' ";
+                SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
+                sqlCommand.ExecuteNonQuery();
+
+                _sumCount = 0;
+
+                _sqlConnection.Close();
+                UpdateOrders();
+            }
+            catch (Exception)
+            {
+                if (_sqlConnection.State == ConnectionState.Open)
+                    _sqlConnection.Close();
+            }
+        }
+
+        public void PlaceOrder()
+        {
+            if (_sqlConnection.State != ConnectionState.Open)
+                _sqlConnection.Open();
 
             _orderCommand = $"delete from Заказы where [Номер клиента] = '{User.Login}' ";
 
@@ -139,6 +248,8 @@ namespace SCN.ViewModels
             _sqlConnection.Close();
 
             UpdateOrders();
+
+            MessageBox.Show("Заказ успешно оформлен!");
         }
 
         public void CalculateSumPrice()
@@ -149,13 +260,78 @@ namespace SCN.ViewModels
                 SumPrice += order.Price;
             }
         }
-
         public void CloseThisWindow()
         {
             Window window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
             window.Close();
         }
 
+        public void AddCountOrder()
+        {
+            try
+            {
+                _sqlConnection.Open();
+                string model = SelectedComponent.Name;
+                string modelBuf = model.Substring(model.IndexOf(" ") + 1);
+
+                _orderCommand = $"update Заказы set [Кол-во] = [Кол-во] + 1, Цена = Цена + (Цена / [Кол-во]) where Модель = '{model}'; ";
+
+                if (IsСomponentNotExist(modelBuf) == false)
+                {
+                    SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
+                    sqlCommand.ExecuteNonQuery();
+                    ReturnComponentFromBasket('-', 1);
+                    _sumCount = 0;
+
+                    if (_sqlConnection.State != ConnectionState.Closed)
+                        _sqlConnection.Close();
+
+                    UpdateOrders();
+                }
+                else
+                {
+                    MessageBox.Show("Товара больше нет в наличии!");
+                }
+            }
+            catch (Exception)
+            {
+                if (_sqlConnection.State == ConnectionState.Open)
+                    _sqlConnection.Close();
+            }
+        }
+
+        public void SubstructCountOrder()
+        {  
+           try
+           {
+                _sqlConnection.Open();
+                string model = SelectedComponent.Name;
+                int count = SelectedComponent.CountOrder;
+                _orderCommand = $"update Заказы set [Кол-во] = [Кол-во] - 1, Цена = Цена - (Цена / [Кол-во]) where Модель = '{model}' ";
+                
+                if (count > 1)
+                {
+                    SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
+                    sqlCommand.ExecuteNonQuery();
+                    ReturnComponentFromBasket('+', 1);
+                }
+                else
+                {
+                    DeleteOrder();
+                }
+                _sumCount = 0;
+                _sqlConnection.Close();
+
+                UpdateOrders();
+            } 
+            catch(Exception) 
+            {
+                if (_sqlConnection.State == ConnectionState.Open)
+                    _sqlConnection.Close();
+            }
+         
+        }
+      
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")
@@ -165,7 +341,9 @@ namespace SCN.ViewModels
         }
         public RelayCommand DeleteOrderCommand { get => _deleteOrderCommand ?? (_deleteOrderCommand = new RelayCommand(obj => DeleteOrder())); }
         public RelayCommand AllDeleteOrderCommand { get => _allDeleteOrderCommand ?? (_allDeleteOrderCommand = new RelayCommand(obj => AllDeleteOrders())); }
+        public RelayCommand PlaceOrderCommand { get => _placeOrderCommand ?? (_placeOrderCommand = new RelayCommand(obj => PlaceOrder())); }
         public RelayCommand CloseWindowCommand { get => _closeWindowCommand ?? (_closeWindowCommand = new RelayCommand(obj => CloseThisWindow())); }
-
+        public RelayCommand AddCountOrderCommand { get => _addCountOrderCommand ?? (_addCountOrderCommand = new RelayCommand(obj => AddCountOrder())); }
+        public RelayCommand SubstructCountOrderCommand { get => _substructCountOrderCommand ?? (_substructCountOrderCommand = new RelayCommand(obj => SubstructCountOrder())); }
     }
 }

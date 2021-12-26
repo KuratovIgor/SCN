@@ -22,8 +22,6 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-
-
         <ListBox SelectedItem="{Binding SelectedComponent, Mode=TwoWay}" Grid.Column="0"  ItemsSource="{Binding Orders, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -31,7 +29,8 @@
                         <Grid Width="875" Height="80">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.Column="0" Source="{Binding SourceUri}"></Image>
@@ -45,11 +44,26 @@
                                     <TextBlock Text="{Binding Price}" FontSize="20"></TextBlock>
                                     <TextBlock Text=" руб" FontSize="25" FontFamily ="Futura PT"></TextBlock>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Кол-во " FontSize="20" FontFamily ="Futura PT"></TextBlock>
-                                    <TextBlock Text="{Binding CountOrder}" FontSize="20"></TextBlock>
-                                </StackPanel>
+                                
                             </StackPanel>
+                            <Grid Grid.Column="2" HorizontalAlignment="Right" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0" Width="60" Height="60" Content="-" Template="{StaticResource btnTemplate}" Command="{Binding Path=DataContext.SubstructCountOrderCommand , 
+                          RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" 
+        CommandParameter="{Binding }"/>
+
+                                <TextBlock Grid.Column="1" Text="{Binding CountOrder}" FontSize="20" VerticalAlignment="Center"></TextBlock>
+
+                                <Button Grid.Column="2" Width="60" Height="60" Content="+" Template="{StaticResource btnTemplate}" Command="{Binding Path=DataContext.AddCountOrderCommand, 
+                          RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" 
+        CommandParameter="{Binding }"/>
+
+                            </Grid>
                         </Grid>
                     </Border>
                 </DataTemplate>
@@ -64,18 +78,19 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" >
-                <TextBlock Text="Кол-во товаров " FontSize="25" FontFamily ="Futura PT"></TextBlock>
+                <TextBlock Text="Кол-во товаров " FontSize="25" FontFamily ="Futura PT" ></TextBlock>
                 <TextBlock Text="{Binding CountOrders, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" FontSize="25" FontFamily ="Futura PT"></TextBlock>
             </StackPanel>
-            <Button Content ="Удалить"  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding DeleteOrderCommand}" ></Button>
-            <Button Content ="Удалить все "  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding AllDeleteOrderCommand }" ></Button>
+            <Button Content ="Удалить товар"  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding DeleteOrderCommand}" ></Button>
+            <Button Content ="Очистить корзину "  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding AllDeleteOrderCommand }" ></Button>
+            <Button Content ="Оформить заказ "  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding PlaceOrderCommand }" ></Button>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="470"/>
+                    <RowDefinition Height="350"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
                 <Image Grid.Row="0" Source="{Binding SourceBack}"  ></Image>
-                <Button Grid.Row="1" Content ="Назад "  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding CloseWindowCommand }" ></Button>
+                <Button Grid.Row="1" Content ="Назад "  Grid.Column="1" Template="{StaticResource btnTemplate}" Command="{Binding CloseWindowCommand}" ></Button>
             </Grid>
         </StackPanel>
     </Grid>

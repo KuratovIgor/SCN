@@ -115,10 +115,7 @@ namespace SCN.ComputerComponents
                     UpdateInfo("Процессоры");
                 }
             }
-            catch(Exception)
-            {
-
-            }
+            catch(Exception) { }
                       
         }
 
