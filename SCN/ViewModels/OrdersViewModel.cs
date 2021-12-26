@@ -76,7 +76,7 @@ namespace SCN.ViewModels
 
             _sqlConnection.Open();
 
-            _executedCommand = $"select Номер, Модель, Цена, [Тип комплектующего], [Кол-во] from Заказы where [Номер клиента] = 'kuratov'";
+            _executedCommand = $"select Номер, Модель, Цена, [Тип комплектующего], [Кол-во] from Заказы where [Номер клиента] = '{User.Login}'";
 
             SqlCommand sqlCommand = new SqlCommand(_executedCommand, _sqlConnection);
 
@@ -106,7 +106,7 @@ namespace SCN.ViewModels
                 _sqlConnection.Open();
                 int id = SelectedComponent.Id;
 
-                _orderCommand = $"delete from Заказы where [Номер клиента] = 'kuratov' and Номер = {id} ";
+                _orderCommand = $"delete from Заказы where [Номер клиента] = '{User.Login}' and Номер = {id} ";
 
                 SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
                 sqlCommand.ExecuteNonQuery(); 
@@ -130,7 +130,7 @@ namespace SCN.ViewModels
         {
             _sqlConnection.Open();
 
-            _orderCommand = $"delete from Заказы where [Номер клиента] = 'kuratov' ";
+            _orderCommand = $"delete from Заказы where [Номер клиента] = '{User.Login}' ";
 
             SqlCommand sqlCommand = new SqlCommand(_orderCommand, _sqlConnection);
             sqlCommand.ExecuteNonQuery();

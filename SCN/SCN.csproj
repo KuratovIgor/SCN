@@ -74,8 +74,16 @@
     <Compile Include="AdminVersion\ViewModels\AddSsdVM.cs" />
     <Compile Include="AdminVersion\ViewModels\AddSystemBoardVM.cs" />
     <Compile Include="AdminVersion\ViewModels\AddVideocardVM.cs" />
+    <Compile Include="AdminVersion\ViewModels\AllOrdersVM.cs" />
     <Compile Include="AdminVersion\ViewModels\BaseAddVM.cs" />
+    <Compile Include="AdminVersion\ViewModels\ClientVM.cs" />
     <Compile Include="AdminVersion\ViewModels\MainAdminViewModel.cs" />
+    <Compile Include="AdminVersion\Windows\AllOrdersWindow.xaml.cs">
+      <DependentUpon>AllOrdersWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVersion\Windows\ClientWindow.xaml.cs">
+      <DependentUpon>ClientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminVersion\Windows\MainAdminWindow.xaml.cs">
       <DependentUpon>MainAdminWindow.xaml</DependentUpon>
     </Compile>
@@ -188,6 +196,14 @@
     <Compile Include="Register\RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdminVersion\Windows\AllOrdersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminVersion\Windows\ClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminVersion\Windows\MainAdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

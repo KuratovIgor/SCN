@@ -28,9 +28,9 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" Content="Клиенты" Template="{StaticResource btnTemplate}" Command="{Binding}"/>
+                <Button Grid.Row="0" Content="Клиенты" Template="{StaticResource btnTemplate}" Command="{Binding OpenClientWindowCommand}"/>
                 <Button Grid.Row="1" Content="Комплектующие" Template="{StaticResource btnTemplate}" Command="{Binding OpenComputerComponentsCommand}"/>
-                <Button Grid.Row="2" Content="Заказы" Template="{StaticResource btnTemplate}" Command="{Binding}"/>
+                <Button Grid.Row="2" Content="История заказов" Template="{StaticResource btnTemplate}" Command="{Binding ShowAllOrdersCommand}"/>
             </Grid>
         </Border>
 

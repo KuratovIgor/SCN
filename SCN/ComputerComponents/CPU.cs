@@ -65,7 +65,7 @@ namespace SCN.ComputerComponents
             if (_sqlConnection.State != ConnectionState.Open)        
                 _sqlConnection.Open();
                    
-            _executedCommand = $"select Модель from Заказы where [Номер клиента] = 'kuratov'";
+            _executedCommand = $"select Модель from Заказы where [Номер клиента] = '{User.Login}'";
 
             SqlCommand sqlCommand = new SqlCommand(_executedCommand, _sqlConnection);
 
@@ -108,7 +108,7 @@ namespace SCN.ComputerComponents
                         _orderSqlCommand = $"update Заказы set [Кол-во] = [Кол-во] + 1, Цена = Цена + {price} where Модель = '{resModel}' ";
 
                     else
-                        _orderSqlCommand = $"insert into Заказы values ('kuratov', '2', '{resModel}', {price}, {count} )";
+                        _orderSqlCommand = $"insert into Заказы values ('{User.Login}', '2', '{resModel}', {price}, {count} )";
 
                     AddOrder(_orderSqlCommand);
                     UpdateCPU();

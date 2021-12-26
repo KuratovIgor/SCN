@@ -1,0 +1,49 @@
+﻿<Window x:Class="SCN.AdminVersion.Windows.ClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SCN.AdminVersion.Windows"
+        xmlns:vm="clr-namespace:SCN.AdminVersion.ViewModels"
+        mc:Ignorable="d"
+        Title="Клиенты" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary Source="../../XamlResources.xaml"></ResourceDictionary>
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:ClientVM></vm:ClientVM>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Клиенты" FontSize="30" FontFamily="Arial Italic"></TextBlock>
+
+        <DataGrid Grid.Row="1" ColumnWidth="*"
+                  IsReadOnly="True"
+                  FontSize="20"
+                  Background="White"
+                  AutoGenerateColumns="False"
+                  BorderBrush="White"
+                  ItemsSource="{Binding Clients.DefaultView, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+            <!--SelectedItem="{Binding SelectedClient, Mode=TwoWay}"-->
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Клиент" Binding="{Binding Path=FIO, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+
+    </Grid>
+</Window>

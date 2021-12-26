@@ -58,7 +58,7 @@ namespace SCN.ComputerComponents
             if (_sqlConnection.State != ConnectionState.Open)
                 _sqlConnection.Open();
 
-            _executedCommand = $"select Модель from Заказы where [Номер клиента] = 'kuratov'";
+            _executedCommand = $"select Модель from Заказы where [Номер клиента] = '{User.Login}'";
 
             SqlCommand sqlCommand = new SqlCommand(_executedCommand, _sqlConnection);
 
@@ -101,7 +101,7 @@ namespace SCN.ComputerComponents
                     if (IsDuplicate() == true)
                         _orderCommand = $"update Заказы set [Кол-во] = [Кол-во] + 1, Цена = Цена + {price} where Модель = '{resModel}' ";
                     else
-                        _orderCommand = $"insert into Заказы values ('kuratov', '5', '{resModel}', {price}, {count})";
+                        _orderCommand = $"insert into Заказы values ('{User.Login}', '5', '{resModel}', {price}, {count})";
                     AddOrder(_orderCommand);
                     UpdateRAM();
                     UpdateInfo("Оперативная память");

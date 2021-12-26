@@ -1,0 +1,50 @@
+﻿<Window x:Class="SCN.AdminVersion.Windows.AllOrdersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SCN.AdminVersion.Windows"
+        xmlns:vm="clr-namespace:SCN.AdminVersion.ViewModels"
+        mc:Ignorable="d"
+        Title="Истрия заказов" Height="550" Width="1200">
+    <Window.Resources>
+        <ResourceDictionary Source="../../XamlResources.xaml"></ResourceDictionary>
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:AllOrdersVM></vm:AllOrdersVM>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Заказы" FontSize="30" FontFamily="Arial Italic"></TextBlock>
+
+        <DataGrid Grid.Row="1" ColumnWidth="*"
+                  IsReadOnly="True"
+                  FontSize="20"
+                  Background="White"
+                  AutoGenerateColumns="True"
+                  BorderBrush="White"
+                  ItemsSource="{Binding Orders.DefaultView, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+
+            <!--<DataGrid.Columns>
+                <DataGridTextColumn Header="Клиент" Binding="{Binding Path=FIO, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Комплектующее" Binding="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Модель" Binding="{Binding Path=Модель, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Path=Цена, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Path=Кол-во, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"></DataGridTextColumn>
+            </DataGrid.Columns>-->
+        </DataGrid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+    </Grid>
+</Window>
