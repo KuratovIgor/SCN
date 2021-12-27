@@ -54,6 +54,8 @@ namespace SCN.ViewModels
             {
                 AuthorizeClient();
 
+                User.IsAdmin = 0;
+
                 var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
                 window.Close();
 
