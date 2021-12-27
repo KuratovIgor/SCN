@@ -33,6 +33,7 @@ namespace SCN.ViewModels
         private RelayCommand _addCountOrderCommand;
         private RelayCommand _placeOrderCommand;
         private RelayCommand _substructCountOrderCommand;
+        
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order> { };
         public string SourceBack { get; set; }
         public int SumPrice
